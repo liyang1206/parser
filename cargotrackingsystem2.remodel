@@ -1,0 +1,156 @@
+UseCaseModel CargoTrackingSystem2 {
+	UC::createLocation "Create Location"
+	UC::viewTracking "View Tracking" definedBySSD(ViewTrackingSSD) relatedService(ViewTrackingService)
+	UC::viewCargos "View Cargos"
+	UC::bookCargo "Book Cargo"
+	UC::changeCargoDestination "Change Cargo Destination"
+	UC::routeCargo "Route Cargo"
+	UC::createVoyage "Create Voyage"
+	UC::addCarrierMovement "Add Carrier Movement"
+	UC::handleCargoEvent "Handle Cargo Event"
+
+	Actor Customer {
+		viewTracking
+	}
+
+	Actor Admin {
+		createLocation
+	}
+
+	Actor CargoPlanner {
+		viewCargos
+		bookCargo
+		changeCargoDestination
+		routeCargo
+	}
+
+	Actor VoyageManager {
+		createVoyage
+		addCarrierMovement
+	}
+
+	Actor CargoTracker {
+		handleCargoEvent
+	}
+
+	Interaction ViewTrackingSSD {
+
+		[Participants: Customer ViewTrackingService]
+
+		CallMessage::ViewTrackingSSDCallMessage1(getCargoInfo ViewTrackingSSDCallMessage1SendingEnd -> ViewTrackingSSDExecution1StartEnd)
+		ReturnMessage::ViewTrackingSSDCallMessage1Return(ViewTrackingSSDExecution1FinishEnd -> ViewTrackingSSDCallMessage1ReturnReceivingEnd ViewTrackingSSDCallMessage1)
+
+		Execution::ViewTrackingSSDExecution1(ViewTrackingService ViewTrackingSSDExecution1StartEnd ViewTrackingSSDExecution1FinishEnd)
+
+		MessageEnd::ViewTrackingSSDCallMessage1SendingEnd(Customer ViewTrackingSSDCallMessage1)
+		ExecutionEnd::ViewTrackingSSDExecution1StartEnd(ViewTrackingService ViewTrackingSSDExecution1)
+		ExecutionEnd::ViewTrackingSSDExecution1FinishEnd(ViewTrackingService ViewTrackingSSDExecution1)
+		MessageEnd::ViewTrackingSSDCallMessage1ReturnReceivingEnd(Customer ViewTrackingSSDCallMessage1Return)
+
+	}
+
+	Service CargoTrackingSystem2System {
+
+	}
+
+	Service ThirdPartyServices {
+
+	}
+
+
+	Contract CargoTrackingSystem::createLocation() : String {
+        Location
+	}
+	Contract CargoTrackingSystem::viewTracking(trackingID : String) : String {
+        Cargo HandlingEvent Voyage Delivery RouteSpecification
+
+	}
+	Contract CargoTrackingSystem::viewCargos() : String {
+        Cargo RouteSpecification Itinerary Delivery
+	}
+	Contract CargoTrackingSystem::bookCargo() : String {
+        Location Cargo RouteSpecification
+	}
+
+    Contract CargoTrackingSystem::createVoyage() : String {
+        Voyage
+	}
+    Contract CargoTrackingSystem::changeCargoDestination() : String {
+        RouteSpecification Delivery
+	}
+	Contract CargoTrackingSystem::addCarrierMovement() : String {
+	    Voyage CarrierMovement
+    }
+    Contract CargoTrackingSystem::routeCargo() : String {
+        Location Voyage CarrierMovement Itinerary Leg
+    }
+   Contract CargoTrackingSystem::handleCargoEvent() : String {
+        Voyage HandlingEvent Delivery
+    }
+
+}
+
+DomainModel CargoTrackingSystem2 {
+
+	Entity Cargo {
+		TrackingID : String
+
+		[Refer]
+		Goal : RouteSpecification Association
+		DeliveryHistory : HandlingEvent Association
+		CargotoItinerary : Itinerary Association
+		CargotoEntity15 : Delivery Association
+	}
+
+	Entity RouteSpecification {
+		Arrivetime : Date
+
+		[Refer]
+		Destination : Location Association
+		RouteSpecificationtoItinerary : Itinerary Association
+	}
+
+	Entity Location {
+		PortCode : String
+	}
+
+	Entity HandlingEvent {
+		Content : String
+
+		[Refer]
+		DeliveryHistorytoCargo : Cargo ! Association
+		HistorytoEvent : Voyage* Association
+	}
+
+	Entity Voyage {
+		Completiontime : Date
+		Type : EventType[LOAD|UNLOAD|PICKUP]
+
+		[Refer]
+		Handled : Cargo* Association
+		EventtoMovement : CarrierMovement Association
+	}
+
+	Entity CarrierMovement {
+		ScheduleID : String
+
+		[Refer]
+		From : Location Association
+		To : Location Association
+	}
+
+	Entity Itinerary {
+	}
+
+	Entity Leg {
+		[Refer]
+		LegtoItinerary : Itinerary Association
+		From : Location Association
+		To : Location Association
+	}
+
+	Entity Delivery {
+	}
+
+}
+
