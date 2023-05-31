@@ -1,0 +1,1237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xmi:XMI xmlns:req="http://www.example.org/req" xmi:version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <req:RequirementModel>
+    <UseCaseModel name="trainticket.remodel">
+      <usecasecontext name="Microservice 0">
+        <uc name="getTransferResult"/>
+        <uc name="getCheapestRoutes"/>
+      </usecasecontext>
+      <usecasecontext name="Microservice 1">
+        <uc name="getByMinStation"/>
+      </usecasecontext>
+      <usecasecontext name="Microservice 2">
+        <uc name="manageWaitListOrders"/>
+        <uc name="manageConfig"/>
+        <uc name="managePrice"/>
+        <uc name="manageTravel"/>
+        <uc name="manageUser"/>
+        <uc name="manageConsign"/>
+        <uc name="manageFoodDelivery"/>
+        <uc name="updateSeatNo"/>
+        <uc name="manageAccout"/>
+        <uc name="payDifference"/>
+        <uc name="order_create_success"/>
+        <uc name="order_cancel_success"/>
+        <uc name="securityInfoCheck"/>
+      </usecasecontext>
+      <usecasecontext name="Microservice 3">
+        <uc name="getLeftTicketOfInterval"/>
+        <uc name="manageContacts"/>
+        <uc name="manageStation"/>
+        <uc name="manageTrain"/>
+        <uc name="manageOrder"/>
+        <uc name="executeOrder"/>
+        <uc name="manageRoute"/>
+        <uc name="manageAssurance"/>
+        <uc name="queryForTravel"/>
+        <uc name="cancelTicket"/>
+        <uc name="manageConsignPrice"/>
+        <uc name="getPriceByWeightAndRegion"/>
+        <uc name="executeTicket"/>
+        <uc name="updateTripId"/>
+        <uc name="updateDeliveryTime"/>
+        <uc name="manageFood"/>
+        <uc name="pay"/>
+        <uc name="addMoney"/>
+        <uc name="createAccout"/>
+        <uc name="drawBack"/>
+        <uc name="preserve_success"/>
+        <uc name="order_changed_success"/>
+        <uc name="managePayment"/>
+        <uc name="preserve"/>
+        <uc name="rebook"/>
+        <uc name="getQuickestRoutes"/>
+        <uc name="getMinStopStations"/>
+        <uc name="manageSeat"/>
+        <uc name="distributeSeat"/>
+        <uc name="manageSecurityConfig"/>
+        <uc name="getFoodStores"/>
+        <uc name="getTrainFood"/>
+        <uc name="getByCheapestTravel"/>
+        <uc name="getByQuickestTravel"/>
+      </usecasecontext>
+      <actor name="Email" uc="/0/@UseCaseModel/@usecasecontext.2/@uc.10 /0/@UseCaseModel/@usecasecontext.2/@uc.11 /0/@UseCaseModel/@usecasecontext.3/@uc.21 /0/@UseCaseModel/@usecasecontext.3/@uc.20"/>
+      <actor name="Customer" uc="/0/@UseCaseModel/@usecasecontext.3/@uc.0 /0/@UseCaseModel/@usecasecontext.3/@uc.9 /0/@UseCaseModel/@usecasecontext.3/@uc.25 /0/@UseCaseModel/@usecasecontext.3/@uc.19 /0/@UseCaseModel/@usecasecontext.0/@uc.1 /0/@UseCaseModel/@usecasecontext.0/@uc.0 /0/@UseCaseModel/@usecasecontext.3/@uc.16 /0/@UseCaseModel/@usecasecontext.3/@uc.17 /0/@UseCaseModel/@usecasecontext.3/@uc.12 /0/@UseCaseModel/@usecasecontext.3/@uc.23 /0/@UseCaseModel/@usecasecontext.3/@uc.8 /0/@UseCaseModel/@usecasecontext.3/@uc.32 /0/@UseCaseModel/@usecasecontext.2/@uc.9 /0/@UseCaseModel/@usecasecontext.3/@uc.18 /0/@UseCaseModel/@usecasecontext.1/@uc.0 /0/@UseCaseModel/@usecasecontext.3/@uc.33 /0/@UseCaseModel/@usecasecontext.3/@uc.24 /0/@UseCaseModel/@usecasecontext.3/@uc.11 /0/@UseCaseModel/@usecasecontext.3/@uc.30 /0/@UseCaseModel/@usecasecontext.3/@uc.31 /0/@UseCaseModel/@usecasecontext.3/@uc.26"/>
+      <actor name="TrainStaff" uc="/0/@UseCaseModel/@usecasecontext.3/@uc.13 /0/@UseCaseModel/@usecasecontext.2/@uc.7 /0/@UseCaseModel/@usecasecontext.3/@uc.14 /0/@UseCaseModel/@usecasecontext.2/@uc.0 /0/@UseCaseModel/@usecasecontext.2/@uc.6"/>
+      <actor name="Worker" uc="/0/@UseCaseModel/@usecasecontext.3/@uc.10 /0/@UseCaseModel/@usecasecontext.2/@uc.5"/>
+      <actor name="Admin" uc="/0/@UseCaseModel/@usecasecontext.3/@uc.27 /0/@UseCaseModel/@usecasecontext.2/@uc.2 /0/@UseCaseModel/@usecasecontext.3/@uc.6 /0/@UseCaseModel/@usecasecontext.3/@uc.5 /0/@UseCaseModel/@usecasecontext.3/@uc.15 /0/@UseCaseModel/@usecasecontext.3/@uc.22 /0/@UseCaseModel/@usecasecontext.3/@uc.28 /0/@UseCaseModel/@usecasecontext.2/@uc.12 /0/@UseCaseModel/@usecasecontext.2/@uc.8 /0/@UseCaseModel/@usecasecontext.3/@uc.7 /0/@UseCaseModel/@usecasecontext.3/@uc.2 /0/@UseCaseModel/@usecasecontext.2/@uc.4 /0/@UseCaseModel/@usecasecontext.3/@uc.29 /0/@UseCaseModel/@usecasecontext.3/@uc.1 /0/@UseCaseModel/@usecasecontext.2/@uc.1 /0/@UseCaseModel/@usecasecontext.3/@uc.3 /0/@UseCaseModel/@usecasecontext.3/@uc.4 /0/@UseCaseModel/@usecasecontext.2/@uc.3"/>
+    </UseCaseModel>
+    <DomainModel name="trainticket.remodel">
+      <systeminterface xsi:type="req:ProvideInterface" name="ProvideEntityofAssuranceTypeBeanConsignRecord" entitycontext="/0/@DomainModel/@entitycontext.0" receiveinterface="/0/@DomainModel/@systeminterface.11"/>
+      <systeminterface xsi:type="req:ProvideInterface" name="ProvideEntityofOrderAlterInfo" entitycontext="/0/@DomainModel/@entitycontext.0" receiveinterface="/0/@DomainModel/@systeminterface.13"/>
+      <systeminterface xsi:type="req:ProvideInterface" name="ProvideEntityofConsignRecordPriceConfigRouteInfo" entitycontext="/0/@DomainModel/@entitycontext.0" receiveinterface="/0/@DomainModel/@systeminterface.15"/>
+      <systeminterface xsi:type="req:ProvideInterface" name="ProvideEntityofPriceAssuranceContacts" entitycontext="/0/@DomainModel/@entitycontext.1" receiveinterface="/0/@DomainModel/@systeminterface.16"/>
+      <systeminterface xsi:type="req:ProvideInterface" name="ProvideEntityofOrder" entitycontext="/0/@DomainModel/@entitycontext.2" receiveinterface="/0/@DomainModel/@systeminterface.9"/>
+      <systeminterface xsi:type="req:ProvideInterface" name="ProvideEntityofOrderDelivery" entitycontext="/0/@DomainModel/@entitycontext.2" receiveinterface="/0/@DomainModel/@systeminterface.17"/>
+      <systeminterface xsi:type="req:ProvideInterface" name="ProvideEntityofConsignStationTrainSeatTravelTrip" entitycontext="/0/@DomainModel/@entitycontext.3" receiveinterface="/0/@DomainModel/@systeminterface.10"/>
+      <systeminterface xsi:type="req:ProvideInterface" name="ProvideEntityofPriceInfoPlainAssuranceUserAccoutRouteTrainSeatTripResponse" entitycontext="/0/@DomainModel/@entitycontext.3" receiveinterface="/0/@DomainModel/@systeminterface.12"/>
+      <systeminterface xsi:type="req:ProvideInterface" name="ProvideEntityofOrderInfoDeliveryInfoFoodPaymentSecurityConfig" entitycontext="/0/@DomainModel/@entitycontext.3" receiveinterface="/0/@DomainModel/@systeminterface.14"/>
+      <systeminterface xsi:type="req:ReceiveInterface" name="ReceiveEntityofOrder" entitycontext="/0/@DomainModel/@entitycontext.0" provideinterface="/0/@DomainModel/@systeminterface.4"/>
+      <systeminterface xsi:type="req:ReceiveInterface" name="ReceiveEntityofConsignStationTrainSeatTravelTrip" entitycontext="/0/@DomainModel/@entitycontext.0" provideinterface="/0/@DomainModel/@systeminterface.6"/>
+      <systeminterface xsi:type="req:ReceiveInterface" name="ReceiveEntityofAssuranceTypeBeanConsignRecord" entitycontext="/0/@DomainModel/@entitycontext.1" provideinterface="/0/@DomainModel/@systeminterface.0"/>
+      <systeminterface xsi:type="req:ReceiveInterface" name="ReceiveEntityofPriceInfoPlainAssuranceUserAccoutRouteTrainSeatTripResponse" entitycontext="/0/@DomainModel/@entitycontext.1" provideinterface="/0/@DomainModel/@systeminterface.7"/>
+      <systeminterface xsi:type="req:ReceiveInterface" name="ReceiveEntityofOrderAlterInfo" entitycontext="/0/@DomainModel/@entitycontext.2" provideinterface="/0/@DomainModel/@systeminterface.1"/>
+      <systeminterface xsi:type="req:ReceiveInterface" name="ReceiveEntityofOrderInfoDeliveryInfoFoodPaymentSecurityConfig" entitycontext="/0/@DomainModel/@entitycontext.2" provideinterface="/0/@DomainModel/@systeminterface.8"/>
+      <systeminterface xsi:type="req:ReceiveInterface" name="ReceiveEntityofConsignRecordPriceConfigRouteInfo" entitycontext="/0/@DomainModel/@entitycontext.3" provideinterface="/0/@DomainModel/@systeminterface.2"/>
+      <systeminterface xsi:type="req:ReceiveInterface" name="ReceiveEntityofPriceAssuranceContacts" entitycontext="/0/@DomainModel/@entitycontext.3" provideinterface="/0/@DomainModel/@systeminterface.3"/>
+      <systeminterface xsi:type="req:ReceiveInterface" name="ReceiveEntityofOrderDelivery" entitycontext="/0/@DomainModel/@entitycontext.3" provideinterface="/0/@DomainModel/@systeminterface.5"/>
+      <systeminterface xsi:type="req:ProvideInterface" name="UserInterfaceofMS0" entitycontext="/0/@DomainModel/@entitycontext.0"/>
+      <systeminterface xsi:type="req:ProvideInterface" name="UserInterfaceofMS1" entitycontext="/0/@DomainModel/@entitycontext.1"/>
+      <systeminterface xsi:type="req:ProvideInterface" name="UserInterfaceofMS2" entitycontext="/0/@DomainModel/@entitycontext.2"/>
+      <systeminterface xsi:type="req:ProvideInterface" name="UserInterfaceofMS3" entitycontext="/0/@DomainModel/@entitycontext.3"/>
+      <entitycontext name="EntityContext0" systeminterface="/0/@DomainModel/@systeminterface.0 /0/@DomainModel/@systeminterface.1 /0/@DomainModel/@systeminterface.2 /0/@DomainModel/@systeminterface.9 /0/@DomainModel/@systeminterface.10 /0/@DomainModel/@systeminterface.18">
+        <userinterface name="UserInterface">
+          <operation name="getTransferResult()"/>
+          <operation name="getCheapestRoutes()"/>
+        </userinterface>
+        <userinterface name="InterSystemInterface">
+          <operation name="findAssuranceTypeBeanbyID()"/>
+          <operation name="findOrderAlterInfobyID()"/>
+          <operation name="findConsignRecordbyID()"/>
+          <operation name="findPriceConfigbyID()"/>
+          <operation name="findRouteInfobyID()"/>
+        </userinterface>
+        <entity name="AssuranceTypeBean">
+          <attributes name="Index">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="Name">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Price">
+            <type xsi:type="req:PrimitiveTypeCS" name="Real"/>
+          </attributes>
+        </entity>
+        <entity name="GetOrderByIdInfo">
+          <attributes name="OrderId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+        <entity name="OrderAlterInfo">
+          <attributes name="AccoutId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="PreviousOrderId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="LoginToken">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="NewOrderInfo">
+            <type xsi:type="req:PrimitiveTypeCS" name="Order"/>
+          </attributes>
+        </entity>
+        <entity name="ConsignRecord">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="OrderId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="HandleDate">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="TargetDate">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="From">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="To">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Consignee">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Phone">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Weight">
+            <type xsi:type="req:PrimitiveTypeCS" name="Real"/>
+          </attributes>
+          <attributes name="IsWithin">
+            <type xsi:type="req:PrimitiveTypeCS" name="Boolean"/>
+          </attributes>
+        </entity>
+        <entity name="Money">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="UserId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Name">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Type">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+        <entity name="PriceConfig">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="TrainType">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="RouteId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="BasicPriceRate">
+            <type xsi:type="req:PrimitiveTypeCS" name="Real"/>
+          </attributes>
+          <attributes name="FirstClassPriceRate">
+            <type xsi:type="req:PrimitiveTypeCS" name="Real"/>
+          </attributes>
+        </entity>
+        <entity name="RouteInfo">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="StationList">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="DistanceList">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="StartStation">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="EndStation">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+        <entity name="AdminTrip">
+          <attributes name="Trip">
+            <type xsi:type="req:PrimitiveTypeCS" name="Trip"/>
+          </attributes>
+          <attributes name="Train">
+            <type xsi:type="req:PrimitiveTypeCS" name="Train"/>
+          </attributes>
+          <attributes name="Route">
+            <type xsi:type="req:PrimitiveTypeCS" name="Route"/>
+          </attributes>
+        </entity>
+        <entity name="TravelAdvanceResultInfo">
+          <attributes name="TripId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="TrainTypeId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="StartStation">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="EndStation">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="StopStations">
+            <type xsi:type="req:PrimitiveTypeCS" name="Set"/>
+          </attributes>
+          <attributes name="PriceForSecondClassSeat">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="NumberOfRestTicketSecondClass">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="PriceForFirstClassSeat">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="NumberOfRestTicketFirstClass">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="StartTime">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="EndTime">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+      </entitycontext>
+      <entitycontext name="EntityContext1" systeminterface="/0/@DomainModel/@systeminterface.3 /0/@DomainModel/@systeminterface.11 /0/@DomainModel/@systeminterface.12 /0/@DomainModel/@systeminterface.19">
+        <userinterface name="UserInterface">
+          <operation name="getByMinStation()"/>
+        </userinterface>
+        <userinterface name="InterSystemInterface">
+          <operation name="findPricebyID()"/>
+          <operation name="findAssurancebyID()"/>
+          <operation name="findContactsbyID()"/>
+        </userinterface>
+        <entity name="Price">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="TrainType">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="RouteId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="BasicPriceRate">
+            <type xsi:type="req:PrimitiveTypeCS" name="Real"/>
+          </attributes>
+          <attributes name="FirstClassPriceRate">
+            <type xsi:type="req:PrimitiveTypeCS" name="Real"/>
+          </attributes>
+        </entity>
+        <entity name="Assurance">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="OrderId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Type">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+        <entity name="GetAccountByIdInfo">
+          <attributes name="AccoutId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+        <entity name="InsertConsignRecordResult">
+          <attributes name="Status">
+            <type xsi:type="req:PrimitiveTypeCS" name="Boolean"/>
+          </attributes>
+          <attributes name="Message">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+        <entity name="Contacts">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="AccountId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Name">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="DocumentNumber">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="PhoneNumber">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+        <entity name="AllTripFood">
+          <attributes name="TrainFoodList">
+            <type xsi:type="req:PrimitiveTypeCS" name="Set"/>
+          </attributes>
+          <attributes name="FoodStoreList">
+            <type xsi:type="req:PrimitiveTypeCS" name="Set"/>
+          </attributes>
+        </entity>
+        <entity name="TransferTravelResult">
+          <attributes name="FirstSectionResult">
+            <type xsi:type="req:PrimitiveTypeCS" name="Set"/>
+          </attributes>
+          <attributes name="SecondSectionResult">
+            <type xsi:type="req:PrimitiveTypeCS" name="Set"/>
+          </attributes>
+        </entity>
+      </entitycontext>
+      <entitycontext name="EntityContext2" systeminterface="/0/@DomainModel/@systeminterface.4 /0/@DomainModel/@systeminterface.5 /0/@DomainModel/@systeminterface.13 /0/@DomainModel/@systeminterface.14 /0/@DomainModel/@systeminterface.20">
+        <userinterface name="UserInterface">
+          <operation name="payDifference()"/>
+          <operation name="order_create_success()"/>
+          <operation name="order_cancel_success()"/>
+          <operation name="securityInfoCheck()"/>
+        </userinterface>
+        <userinterface name="InterSystemInterface">
+          <operation name="findOrderbyID()"/>
+          <operation name="findDeliverybyID()"/>
+        </userinterface>
+        <entity name="Order">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="BoughtData">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="TravelDate">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="TravelTime">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="AccoutId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="ContactsName">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="DocumentType">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="ContactsDocumentNumber">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="TrainNumber">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="CoachNumber">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="SeatClass">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="SeatNumber">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="From">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="To">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Status">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="Price">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+        <entity name="Delivery">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="OrderId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="FoodName">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="StoreName">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="StationName">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+        <entity name="FoodDeliveryOrder">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="StationFoodStoreId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="FoodList">
+            <type xsi:type="req:PrimitiveTypeCS" name="Set"/>
+          </attributes>
+          <attributes name="TripId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="SeatNo">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="CreatedTime">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="DeliveryTime">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="DeliveryFee">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+        <entity name="StationFoodStore">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="StationId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="StoreName">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Telephone">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="BusinessTime">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="DeliveryFee">
+            <type xsi:type="req:PrimitiveTypeCS" name="Real"/>
+          </attributes>
+          <attributes name="FoodList">
+            <type xsi:type="req:PrimitiveTypeCS" name="Set"/>
+          </attributes>
+        </entity>
+      </entitycontext>
+      <entitycontext name="EntityContext3" systeminterface="/0/@DomainModel/@systeminterface.6 /0/@DomainModel/@systeminterface.7 /0/@DomainModel/@systeminterface.8 /0/@DomainModel/@systeminterface.15 /0/@DomainModel/@systeminterface.16 /0/@DomainModel/@systeminterface.17 /0/@DomainModel/@systeminterface.21">
+        <userinterface name="UserInterface">
+          <operation name="getLeftTicketOfInterval()"/>
+          <operation name="queryForTravel()"/>
+          <operation name="cancelTicket()"/>
+          <operation name="getPriceByWeightAndRegion()"/>
+          <operation name="executeTicket()"/>
+          <operation name="pay()"/>
+          <operation name="drawBack()"/>
+          <operation name="preserve_success()"/>
+          <operation name="order_changed_success()"/>
+          <operation name="preserve()"/>
+          <operation name="rebook()"/>
+          <operation name="getQuickestRoutes()"/>
+          <operation name="distributeSeat()"/>
+        </userinterface>
+        <userinterface name="InterSystemInterface">
+          <operation name="findPriceInfobyID()"/>
+          <operation name="findPlainAssurancebyID()"/>
+          <operation name="findUserbyID()"/>
+          <operation name="findOrderInfobyID()"/>
+          <operation name="findAccoutbyID()"/>
+          <operation name="findConsignbyID()"/>
+          <operation name="findDeliveryInfobyID()"/>
+          <operation name="findFoodbyID()"/>
+          <operation name="findPaymentbyID()"/>
+          <operation name="findRoutebyID()"/>
+          <operation name="findSecurityConfigbyID()"/>
+          <operation name="findStationbyID()"/>
+          <operation name="findTrainbyID()"/>
+          <operation name="findSeatbyID()"/>
+          <operation name="findTravelbyID()"/>
+          <operation name="findTripbyID()"/>
+          <operation name="findTripResponsebyID()"/>
+        </userinterface>
+        <entity name="PriceInfo">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="TrainType">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="RouteId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="BasicPriceRate">
+            <type xsi:type="req:PrimitiveTypeCS" name="Real"/>
+          </attributes>
+          <attributes name="FirstClassPriceRate">
+            <type xsi:type="req:PrimitiveTypeCS" name="Real"/>
+          </attributes>
+          <reference name="Train" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.3/@entity.28"/>
+          <reference name="Route" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.3/@entity.24"/>
+        </entity>
+        <entity name="PlainAssurance">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="OrderId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="TypeIndex">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="TypeName">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="TypePrice">
+            <type xsi:type="req:PrimitiveTypeCS" name="Real"/>
+          </attributes>
+        </entity>
+        <entity name="User">
+          <attributes name="UserId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="UserName">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Password">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Roles">
+            <type xsi:type="req:PrimitiveTypeCS" name="Set"/>
+          </attributes>
+          <attributes name="Gender">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="DocumentType">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="DocumentNum">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Email">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+        <entity name="AuthDto">
+          <attributes name="UserId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Username">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Password">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <reference name="BelongedUser" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.3/@entity.2"/>
+        </entity>
+        <entity name="BasicAuthDto">
+          <attributes name="Username">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Password">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="VerficationCode">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <reference name="BelongedUser" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.3/@entity.2"/>
+        </entity>
+        <entity name="TokenDto">
+          <attributes name="UserId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Username">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Token">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <reference name="BelongedUser" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.3/@entity.2"/>
+        </entity>
+        <entity name="GetAccountByIdResult">
+          <attributes name="Status">
+            <type xsi:type="req:PrimitiveTypeCS" name="Boolean"/>
+          </attributes>
+          <attributes name="Message">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Accout">
+            <type xsi:type="req:PrimitiveTypeCS" name="Accout"/>
+          </attributes>
+          <reference name="Accout" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.3/@entity.8"/>
+        </entity>
+        <entity name="OrderInfo">
+          <attributes name="LoginId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="TravelDateStart">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="TravelDateEnd">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="BoughtDateStart">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="BoughtDateEnd">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="State">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="EnableTravelDateQuery">
+            <type xsi:type="req:PrimitiveTypeCS" name="Boolean"/>
+          </attributes>
+          <attributes name="EnableBoughtDateQuery">
+            <type xsi:type="req:PrimitiveTypeCS" name="Boolean"/>
+          </attributes>
+          <attributes name="EnableStateQuery">
+            <type xsi:type="req:PrimitiveTypeCS" name="Boolean"/>
+          </attributes>
+        </entity>
+        <entity name="Accout">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="AccoutId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="LoginId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Password">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Gender">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Name">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Money">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="DocumentType">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="DocumentNum">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Email">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <reference name="Balances" type="Association" ismultiple="true" entity="/0/@DomainModel/@entitycontext.3/@entity.17"/>
+        </entity>
+        <entity name="Config">
+          <attributes name="Name">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Value">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Description">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+        <entity name="ConsignPrice">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Index">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="InitialWeight">
+            <type xsi:type="req:PrimitiveTypeCS" name="Real"/>
+          </attributes>
+          <attributes name="InitialPrice">
+            <type xsi:type="req:PrimitiveTypeCS" name="Real"/>
+          </attributes>
+          <attributes name="WithinPrice">
+            <type xsi:type="req:PrimitiveTypeCS" name="Real"/>
+          </attributes>
+          <attributes name="BeyondPrice">
+            <type xsi:type="req:PrimitiveTypeCS" name="Real"/>
+          </attributes>
+          <reference name="Consigns" type="Association" ismultiple="true" entity="/0/@DomainModel/@entitycontext.3/@entity.11"/>
+        </entity>
+        <entity name="Consign">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="OrderId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="AccoutId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="HandleDate">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="TargetDate">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="From">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="To">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Consignee">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Phone">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Weight">
+            <type xsi:type="req:PrimitiveTypeCS" name="Real"/>
+          </attributes>
+          <attributes name="IsWithin">
+            <type xsi:type="req:PrimitiveTypeCS" name="Boolean"/>
+          </attributes>
+          <reference name="Price" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.3/@entity.10"/>
+        </entity>
+        <entity name="GetPriceDomain">
+          <attributes name="Weight">
+            <type xsi:type="req:PrimitiveTypeCS" name="Real"/>
+          </attributes>
+          <attributes name="IsWithinRegion">
+            <type xsi:type="req:PrimitiveTypeCS" name="Boolean"/>
+          </attributes>
+        </entity>
+        <entity name="DeliveryInfo">
+          <attributes name="OrderId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="DeliveryTime">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+        <entity name="SeatInfo">
+          <attributes name="OrderId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="SeatNo">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+        </entity>
+        <entity name="TripOrderInfo">
+          <attributes name="OrderId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="TripId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+        <entity name="Food">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="OrderId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="FoodType">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="StationName">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="StoreName">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="FoodName">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Price">
+            <type xsi:type="req:PrimitiveTypeCS" name="Real"/>
+          </attributes>
+        </entity>
+        <entity name="Balance">
+          <attributes name="UserId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Balance">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <reference name="Accout" type="Association" ismultiple="true" entity="/0/@DomainModel/@entitycontext.3/@entity.8"/>
+        </entity>
+        <entity name="Payment">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="OrderId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="UserId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Price">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Type">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <reference name="PaymentInfo" type="Association" ismultiple="true" entity="/0/@DomainModel/@entitycontext.3/@entity.19"/>
+          <reference name="Info" type="Association" ismultiple="true" entity="/0/@DomainModel/@entitycontext.3/@entity.20"/>
+        </entity>
+        <entity name="OutsidePaymentInfo">
+          <attributes name="OrderId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Price">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="UserId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+        <entity name="PaymentInfo">
+          <attributes name="UserId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="OrderId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="TripId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Price">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <reference name="Payment" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.3/@entity.18"/>
+        </entity>
+        <entity name="Mail">
+          <attributes name="MailFrom">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="MailTo">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="MailCc">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="MailBcc">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="MailSubject">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="MailContent">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="ContentType">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Attachment">
+            <type xsi:type="req:PrimitiveTypeCS" name="Set"/>
+          </attributes>
+        </entity>
+        <entity name="NotifyInfo">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="SendStatus">
+            <type xsi:type="req:PrimitiveTypeCS" name="Boolean"/>
+          </attributes>
+          <attributes name="Email">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="OrderNumber">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="UserName">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="StartPlace">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="EndPlace">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="StartTime">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Time">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="SeatClass">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="SeatNumber">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Price">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+        <entity name="RebookInfo">
+          <attributes name="LoginId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="OrderId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="OldTripId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="TripId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="SeatType">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="Time">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+        <entity name="Route">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Stations">
+            <type xsi:type="req:PrimitiveTypeCS" name="Set"/>
+          </attributes>
+          <attributes name="Distances">
+            <type xsi:type="req:PrimitiveTypeCS" name="Set"/>
+          </attributes>
+          <attributes name="StartStation">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="EndStation">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+        <entity name="SecurityConfig">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Name">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Value">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Description">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+        <entity name="Station">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Name">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="StayTime">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+        </entity>
+        <entity name="TrainFood">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="TripId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="FoodList">
+            <type xsi:type="req:PrimitiveTypeCS" name="Set"/>
+          </attributes>
+          <reference name="Food" type="Association" ismultiple="true" entity="/0/@DomainModel/@entitycontext.3/@entity.16"/>
+        </entity>
+        <entity name="Train">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Name">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="EconomyClass">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="ConfortClass">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="AverageSpeed">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+        </entity>
+        <entity name="Seat">
+          <attributes name="TravelDate">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="TrainNumber">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="StartStation">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="DestStation">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="SeatType">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="Stations">
+            <type xsi:type="req:PrimitiveTypeCS" name="Set"/>
+          </attributes>
+          <reference name="Stations" type="Association" ismultiple="true" entity="/0/@DomainModel/@entitycontext.3/@entity.26"/>
+        </entity>
+        <entity name="Travel">
+          <attributes name="Trip">
+            <type xsi:type="req:PrimitiveTypeCS" name="Trip"/>
+          </attributes>
+          <attributes name="StartPlace">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="EndPlace">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="DepartureTime">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <reference name="Trip" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.3/@entity.31"/>
+        </entity>
+        <entity name="Trip">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="TripId">
+            <type xsi:type="req:PrimitiveTypeCS" name="TripId"/>
+          </attributes>
+          <attributes name="TrainName">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="RouteId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="StartStationName">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="StationsName">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="TerminalStationName">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="StartTime">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="EndTime">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <reference name="TripId" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.3/@entity.32"/>
+          <reference name="Train" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.3/@entity.28"/>
+          <reference name="Route" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.3/@entity.24"/>
+        </entity>
+        <entity name="TripId">
+          <attributes name="Type">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Number">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+        <entity name="TripAllDetail">
+          <attributes name="Status">
+            <type xsi:type="req:PrimitiveTypeCS" name="Boolean"/>
+          </attributes>
+          <attributes name="Message">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="TripResponse">
+            <type xsi:type="req:PrimitiveTypeCS" name="TripResponse"/>
+          </attributes>
+          <attributes name="Trip">
+            <type xsi:type="req:PrimitiveTypeCS" name="Trip"/>
+          </attributes>
+          <reference name="TripResponse" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.3/@entity.34"/>
+          <reference name="Trip" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.3/@entity.31"/>
+        </entity>
+        <entity name="TripResponse">
+          <attributes name="TripId">
+            <type xsi:type="req:PrimitiveTypeCS" name="TripId"/>
+          </attributes>
+          <attributes name="TrainName">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="RouteId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="StartStationName">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="StationsName">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="TerminalStationName">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="StartTime">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="EndTime">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="EconomyClass">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="ConfortClass">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="PriceForEconomyClass">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="PriceForConfortClass">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <reference name="TripId" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.3/@entity.32"/>
+        </entity>
+        <entity name="TravelAdvanceResultUnit">
+          <attributes name="TripId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="TrainType">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="StartStation">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="EndStation">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="StopStations">
+            <type xsi:type="req:PrimitiveTypeCS" name="Set"/>
+          </attributes>
+          <attributes name="PriceForSecondClassSet">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="NumberOfRestTicketSecondSeat">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="StartTime">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="EndTime">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+        <entity name="WaitListOrder">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="TravelTime">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="AccountId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="ContactsId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="ContactsName">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="ContactsDocumentType">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="ContactsDocumentNumber">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="TrainNumber">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="SeatType">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <reference name="Accout" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.3/@entity.8"/>
+          <reference name="Train" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.3/@entity.28"/>
+          <reference name="Seat" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.3/@entity.29"/>
+        </entity>
+        <entity name="WaitListOrderVO">
+          <attributes name="AccoutId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="ContactsId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="TripId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="SeatType">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="Time">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="From">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="To">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Price">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <reference name="Trip" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.3/@entity.31"/>
+          <reference name="Accout" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.3/@entity.8"/>
+          <reference name="Seat" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.3/@entity.29"/>
+        </entity>
+      </entitycontext>
+    </DomainModel>
+  </req:RequirementModel>
+</xmi:XMI>

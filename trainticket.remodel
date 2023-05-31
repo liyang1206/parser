@@ -1,0 +1,1335 @@
+UseCaseModel Trainticket {
+
+	UC::manageContacts
+	UC::manageStation
+	UC::manageTrain
+	UC::manageConfig
+	UC::managePrice
+	UC::manageOrder
+	UC::executeOrder
+	UC::manageRoute
+	UC::manageTravel
+	UC::manageUser
+	UC::manageAssurance
+	UC::queryForTravel definedBySSD(QueryForTravelSSD) relatedService(QueryForTravelService)
+	UC::cancelTicket definedBySSD(CancelTicketSSD) relatedService(CancelTicketService)
+	UC::manageConsignPrice
+	UC::getPriceByWeightAndRegion
+	UC::manageConsign
+	UC::executeTicket
+	UC::manageFoodDelivery
+	UC::updateTripId
+	UC::updateSeatNo
+	UC::updateDeliveryTime
+	UC::manageFood
+	UC::pay definedBySSD(PaySSD) relatedService(PayService)
+	UC::addMoney
+	UC::manageAccout
+	UC::createAccout
+	UC::drawBack
+	UC::payDifference
+	UC::preserve_success
+	UC::order_create_success
+	UC::order_changed_success
+	UC::order_cancel_success
+	UC::securityInfoCheck
+	UC::managePayment
+	UC::preserve definedBySSD(PreserveSSD) relatedService(PreserveService)
+	UC::rebook definedBySSD(RebookSSD) relatedService(RebookService)
+	UC::getCheapestRoutes
+	UC::getQuickestRoutes
+	UC::getMinStopStations
+	UC::manageSeat
+	UC::distributeSeat
+	UC::manageSecurityConfig
+	UC::getFoodStores
+	UC::getTrainFood
+	UC::getTransferResult
+	UC::getByCheapestTravel
+	UC::getByQuickestTravel
+	UC::getByMinStation
+	UC::manageWaitListOrders
+	UC::getLeftTicketOfInterval
+
+	Actor Admin {
+		manageContacts
+		manageStation
+		manageTrain
+		manageConfig
+		managePrice
+		manageOrder
+		manageRoute
+		manageTravel
+		manageUser
+		manageAssurance
+		manageFood
+		securityInfoCheck
+		managePayment
+		manageSeat
+		manageSecurityConfig
+		executeOrder
+		manageAccout
+		distributeSeat
+	}
+
+	Actor Customer {
+		queryForTravel
+		cancelTicket
+		getPriceByWeightAndRegion
+		executeTicket
+		pay
+		addMoney
+		createAccout
+		drawBack
+		payDifference
+		preserve
+		rebook
+		getFoodStores
+		getTrainFood
+		getCheapestRoutes
+		getQuickestRoutes
+		getMinStopStations
+		getLeftTicketOfInterval
+		getTransferResult
+		getByCheapestTravel
+		getByQuickestTravel
+		getByMinStation
+	}
+
+	Actor Worker {
+		manageConsignPrice
+		manageConsign
+	}
+
+	Actor TrainStaff {
+		manageFoodDelivery
+		updateTripId
+		updateSeatNo
+		updateDeliveryTime
+		manageWaitListOrders
+	}
+
+	Actor Email {
+		preserve_success
+		order_create_success
+		order_changed_success
+		order_cancel_success
+		order_create_success
+	}
+
+	Interaction QueryForTravelSSD {
+
+		[Participants: Customer QueryForTravelService]
+
+		CallMessage::QueryForTravelSSDCallMessage1(queryStation QueryForTravelSSDCallMessage1SendingEnd -> QueryForTravelSSDExecution1StartEnd)
+		ReturnMessage::QueryForTravelSSDCallMessage1Return(QueryForTravelSSDExecution1FinishEnd -> QueryForTravelSSDCallMessage1ReturnReceivingEnd QueryForTravelSSDCallMessage1)
+		CallMessage::QueryForTravelSSDCallMessage3(queryTrain QueryForTravelSSDCallMessage3SendingEnd -> QueryForTravelSSDExecution2StartEnd)
+		ReturnMessage::QueryForTravelSSDCallMessage3Return(QueryForTravelSSDExecution2FinishEnd -> QueryForTravelSSDCallMessage3ReturnReceivingEnd QueryForTravelSSDCallMessage3)
+		CallMessage::QueryForTravelSSDCallMessage5(queryRoute QueryForTravelSSDCallMessage5SendingEnd -> QueryForTravelSSDExecution3StartEnd)
+		ReturnMessage::QueryForTravelSSDCallMessage5Return(QueryForTravelSSDExecution3FinishEnd -> QueryForTravelSSDCallMessage5ReturnReceivingEnd QueryForTravelSSDCallMessage5)
+		CallMessage::QueryForTravelSSDCallMessage7(showPrice QueryForTravelSSDCallMessage7SendingEnd -> QueryForTravelSSDExecution4StartEnd)
+		ReturnMessage::QueryForTravelSSDCallMessage7Return(QueryForTravelSSDExecution4FinishEnd -> QueryForTravelSSDCallMessage7ReturnReceivingEnd QueryForTravelSSDCallMessage7)
+
+		Execution::QueryForTravelSSDExecution1(QueryForTravelService QueryForTravelSSDExecution1StartEnd QueryForTravelSSDExecution1FinishEnd)
+		Execution::QueryForTravelSSDExecution2(QueryForTravelService QueryForTravelSSDExecution2StartEnd QueryForTravelSSDExecution2FinishEnd)
+		Execution::QueryForTravelSSDExecution3(QueryForTravelService QueryForTravelSSDExecution3StartEnd QueryForTravelSSDExecution3FinishEnd)
+		Execution::QueryForTravelSSDExecution4(QueryForTravelService QueryForTravelSSDExecution4StartEnd QueryForTravelSSDExecution4FinishEnd)
+
+		MessageEnd::QueryForTravelSSDCallMessage1SendingEnd(Customer QueryForTravelSSDCallMessage1)
+		ExecutionEnd::QueryForTravelSSDExecution1StartEnd(QueryForTravelService QueryForTravelSSDExecution1)
+		ExecutionEnd::QueryForTravelSSDExecution1FinishEnd(QueryForTravelService QueryForTravelSSDExecution1)
+		MessageEnd::QueryForTravelSSDCallMessage1ReturnReceivingEnd(Customer QueryForTravelSSDCallMessage1Return)
+		MessageEnd::QueryForTravelSSDCallMessage3SendingEnd(Customer QueryForTravelSSDCallMessage3)
+		ExecutionEnd::QueryForTravelSSDExecution2StartEnd(QueryForTravelService QueryForTravelSSDExecution2)
+		ExecutionEnd::QueryForTravelSSDExecution2FinishEnd(QueryForTravelService QueryForTravelSSDExecution2)
+		MessageEnd::QueryForTravelSSDCallMessage3ReturnReceivingEnd(Customer QueryForTravelSSDCallMessage3Return)
+		MessageEnd::QueryForTravelSSDCallMessage5SendingEnd(Customer QueryForTravelSSDCallMessage5)
+		ExecutionEnd::QueryForTravelSSDExecution3StartEnd(QueryForTravelService QueryForTravelSSDExecution3)
+		ExecutionEnd::QueryForTravelSSDExecution3FinishEnd(QueryForTravelService QueryForTravelSSDExecution3)
+		MessageEnd::QueryForTravelSSDCallMessage5ReturnReceivingEnd(Customer QueryForTravelSSDCallMessage5Return)
+		MessageEnd::QueryForTravelSSDCallMessage7SendingEnd(Customer QueryForTravelSSDCallMessage7)
+		ExecutionEnd::QueryForTravelSSDExecution4StartEnd(QueryForTravelService QueryForTravelSSDExecution4)
+		ExecutionEnd::QueryForTravelSSDExecution4FinishEnd(QueryForTravelService QueryForTravelSSDExecution4)
+		MessageEnd::QueryForTravelSSDCallMessage7ReturnReceivingEnd(Customer QueryForTravelSSDCallMessage7Return)
+
+	}
+
+	Interaction CancelTicketSSD {
+
+		[Participants: Customer CancelTicketService]
+
+		CallMessage::CancelTicketSSDCallMessage1(queryOrder CancelTicketSSDCallMessage1SendingEnd -> CancelTicketSSDExecution1StartEnd)
+		ReturnMessage::CancelTicketSSDCallMessage1Return(CancelTicketSSDExecution1FinishEnd -> CancelTicketSSDCallMessage1ReturnReceivingEnd CancelTicketSSDCallMessage1)
+		CallMessage::CancelTicketSSDCallMessage3(modifyOrder CancelTicketSSDCallMessage3SendingEnd -> CancelTicketSSDExecution2StartEnd)
+		ReturnMessage::CancelTicketSSDCallMessage3Return(CancelTicketSSDExecution2FinishEnd -> CancelTicketSSDCallMessage3ReturnReceivingEnd CancelTicketSSDCallMessage3)
+		CallMessage::CancelTicketSSDCallMessage5(caculate CancelTicketSSDCallMessage5SendingEnd -> CancelTicketSSDExecution3StartEnd)
+		ReturnMessage::CancelTicketSSDCallMessage5Return(CancelTicketSSDExecution3FinishEnd -> CancelTicketSSDCallMessage5ReturnReceivingEnd CancelTicketSSDCallMessage5)
+		CallMessage::CancelTicketSSDCallMessage7(drawback CancelTicketSSDCallMessage7SendingEnd -> CancelTicketSSDExecution4StartEnd)
+		ReturnMessage::CancelTicketSSDCallMessage7Return(CancelTicketSSDExecution4FinishEnd -> CancelTicketSSDCallMessage7ReturnReceivingEnd CancelTicketSSDCallMessage7)
+		CallMessage::CancelTicketSSDCallMessage9(queryUser CancelTicketSSDCallMessage9SendingEnd -> CancelTicketSSDExecution5StartEnd)
+		ReturnMessage::CancelTicketSSDCallMessage9Return(CancelTicketSSDExecution5FinishEnd -> CancelTicketSSDCallMessage9ReturnReceivingEnd CancelTicketSSDCallMessage9)
+		CallMessage::CancelTicketSSDCallMessage11(sendNotification CancelTicketSSDCallMessage11SendingEnd -> CancelTicketSSDExecution6StartEnd)
+		ReturnMessage::CancelTicketSSDCallMessage11Return(CancelTicketSSDExecution6FinishEnd -> CancelTicketSSDCallMessage11ReturnReceivingEnd CancelTicketSSDCallMessage11)
+
+		Execution::CancelTicketSSDExecution1(CancelTicketService CancelTicketSSDExecution1StartEnd CancelTicketSSDExecution1FinishEnd)
+		Execution::CancelTicketSSDExecution2(CancelTicketService CancelTicketSSDExecution2StartEnd CancelTicketSSDExecution2FinishEnd)
+		Execution::CancelTicketSSDExecution3(CancelTicketService CancelTicketSSDExecution3StartEnd CancelTicketSSDExecution3FinishEnd)
+		Execution::CancelTicketSSDExecution4(CancelTicketService CancelTicketSSDExecution4StartEnd CancelTicketSSDExecution4FinishEnd)
+		Execution::CancelTicketSSDExecution5(CancelTicketService CancelTicketSSDExecution5StartEnd CancelTicketSSDExecution5FinishEnd)
+		Execution::CancelTicketSSDExecution6(CancelTicketService CancelTicketSSDExecution6StartEnd CancelTicketSSDExecution6FinishEnd)
+
+		MessageEnd::CancelTicketSSDCallMessage1SendingEnd(Customer CancelTicketSSDCallMessage1)
+		ExecutionEnd::CancelTicketSSDExecution1StartEnd(CancelTicketService CancelTicketSSDExecution1)
+		ExecutionEnd::CancelTicketSSDExecution1FinishEnd(CancelTicketService CancelTicketSSDExecution1)
+		MessageEnd::CancelTicketSSDCallMessage1ReturnReceivingEnd(Customer CancelTicketSSDCallMessage1Return)
+		MessageEnd::CancelTicketSSDCallMessage3SendingEnd(Customer CancelTicketSSDCallMessage3)
+		ExecutionEnd::CancelTicketSSDExecution2StartEnd(CancelTicketService CancelTicketSSDExecution2)
+		ExecutionEnd::CancelTicketSSDExecution2FinishEnd(CancelTicketService CancelTicketSSDExecution2)
+		MessageEnd::CancelTicketSSDCallMessage3ReturnReceivingEnd(Customer CancelTicketSSDCallMessage3Return)
+		MessageEnd::CancelTicketSSDCallMessage5SendingEnd(Customer CancelTicketSSDCallMessage5)
+		ExecutionEnd::CancelTicketSSDExecution3StartEnd(CancelTicketService CancelTicketSSDExecution3)
+		ExecutionEnd::CancelTicketSSDExecution3FinishEnd(CancelTicketService CancelTicketSSDExecution3)
+		MessageEnd::CancelTicketSSDCallMessage5ReturnReceivingEnd(Customer CancelTicketSSDCallMessage5Return)
+		MessageEnd::CancelTicketSSDCallMessage7SendingEnd(Customer CancelTicketSSDCallMessage7)
+		ExecutionEnd::CancelTicketSSDExecution4StartEnd(CancelTicketService CancelTicketSSDExecution4)
+		ExecutionEnd::CancelTicketSSDExecution4FinishEnd(CancelTicketService CancelTicketSSDExecution4)
+		MessageEnd::CancelTicketSSDCallMessage7ReturnReceivingEnd(Customer CancelTicketSSDCallMessage7Return)
+		MessageEnd::CancelTicketSSDCallMessage9SendingEnd(Customer CancelTicketSSDCallMessage9)
+		ExecutionEnd::CancelTicketSSDExecution5StartEnd(CancelTicketService CancelTicketSSDExecution5)
+		ExecutionEnd::CancelTicketSSDExecution5FinishEnd(CancelTicketService CancelTicketSSDExecution5)
+		MessageEnd::CancelTicketSSDCallMessage9ReturnReceivingEnd(Customer CancelTicketSSDCallMessage9Return)
+		MessageEnd::CancelTicketSSDCallMessage11SendingEnd(Customer CancelTicketSSDCallMessage11)
+		ExecutionEnd::CancelTicketSSDExecution6StartEnd(CancelTicketService CancelTicketSSDExecution6)
+		ExecutionEnd::CancelTicketSSDExecution6FinishEnd(CancelTicketService CancelTicketSSDExecution6)
+		MessageEnd::CancelTicketSSDCallMessage11ReturnReceivingEnd(Customer CancelTicketSSDCallMessage11Return)
+
+	}
+
+	Interaction PaySSD {
+
+		[Participants: Customer PayService]
+
+		CallMessage::PaySSDCallMessage1(queryOder PaySSDCallMessage1SendingEnd -> PaySSDExecution1StartEnd)
+		ReturnMessage::PaySSDCallMessage1Return(PaySSDExecution1FinishEnd -> PaySSDCallMessage1ReturnReceivingEnd PaySSDCallMessage1)
+		CallMessage::PaySSDCallMessage3(queryAccout PaySSDCallMessage3SendingEnd -> PaySSDExecution2StartEnd)
+		ReturnMessage::PaySSDCallMessage3Return(PaySSDExecution2FinishEnd -> PaySSDCallMessage3ReturnReceivingEnd PaySSDCallMessage3)
+		CallMessage::PaySSDCallMessage5(pay PaySSDCallMessage5SendingEnd -> PaySSDExecution3StartEnd)
+		ReturnMessage::PaySSDCallMessage5Return(PaySSDExecution3FinishEnd -> PaySSDCallMessage5ReturnReceivingEnd PaySSDCallMessage5)
+		CallMessage::PaySSDCallMessage7(sendEmial PaySSDCallMessage7SendingEnd -> PaySSDExecution4StartEnd)
+		ReturnMessage::PaySSDCallMessage7Return(PaySSDExecution4FinishEnd -> PaySSDCallMessage7ReturnReceivingEnd PaySSDCallMessage7)
+
+		Execution::PaySSDExecution1(PayService PaySSDExecution1StartEnd PaySSDExecution1FinishEnd)
+		Execution::PaySSDExecution2(PayService PaySSDExecution2StartEnd PaySSDExecution2FinishEnd)
+		Execution::PaySSDExecution3(PayService PaySSDExecution3StartEnd PaySSDExecution3FinishEnd)
+		Execution::PaySSDExecution4(PayService PaySSDExecution4StartEnd PaySSDExecution4FinishEnd)
+
+		MessageEnd::PaySSDCallMessage1SendingEnd(Customer PaySSDCallMessage1)
+		ExecutionEnd::PaySSDExecution1StartEnd(PayService PaySSDExecution1)
+		ExecutionEnd::PaySSDExecution1FinishEnd(PayService PaySSDExecution1)
+		MessageEnd::PaySSDCallMessage1ReturnReceivingEnd(Customer PaySSDCallMessage1Return)
+		MessageEnd::PaySSDCallMessage3SendingEnd(Customer PaySSDCallMessage3)
+		ExecutionEnd::PaySSDExecution2StartEnd(PayService PaySSDExecution2)
+		ExecutionEnd::PaySSDExecution2FinishEnd(PayService PaySSDExecution2)
+		MessageEnd::PaySSDCallMessage3ReturnReceivingEnd(Customer PaySSDCallMessage3Return)
+		MessageEnd::PaySSDCallMessage5SendingEnd(Customer PaySSDCallMessage5)
+		ExecutionEnd::PaySSDExecution3StartEnd(PayService PaySSDExecution3)
+		ExecutionEnd::PaySSDExecution3FinishEnd(PayService PaySSDExecution3)
+		MessageEnd::PaySSDCallMessage5ReturnReceivingEnd(Customer PaySSDCallMessage5Return)
+		MessageEnd::PaySSDCallMessage7SendingEnd(Customer PaySSDCallMessage7)
+		ExecutionEnd::PaySSDExecution4StartEnd(PayService PaySSDExecution4)
+		ExecutionEnd::PaySSDExecution4FinishEnd(PayService PaySSDExecution4)
+		MessageEnd::PaySSDCallMessage7ReturnReceivingEnd(Customer PaySSDCallMessage7Return)
+
+	}
+
+	Interaction PreserveSSD {
+
+		[Participants: Customer PreserveService]
+
+		CallMessage::PreserveSSDCallMessage1(checkSecurity PreserveSSDCallMessage1SendingEnd -> PreserveSSDExecution1StartEnd)
+		ReturnMessage::PreserveSSDCallMessage1Return(PreserveSSDExecution1FinishEnd -> PreserveSSDCallMessage1ReturnReceivingEnd PreserveSSDCallMessage1)
+		CallMessage::PreserveSSDCallMessage3(queryContacts PreserveSSDCallMessage3SendingEnd -> PreserveSSDExecution2StartEnd)
+		ReturnMessage::PreserveSSDCallMessage3Return(PreserveSSDExecution2FinishEnd -> PreserveSSDCallMessage3ReturnReceivingEnd PreserveSSDCallMessage3)
+		CallMessage::PreserveSSDCallMessage5(queryTravels PreserveSSDCallMessage5SendingEnd -> PreserveSSDExecution3StartEnd)
+		ReturnMessage::PreserveSSDCallMessage5Return(PreserveSSDExecution3FinishEnd -> PreserveSSDCallMessage5ReturnReceivingEnd PreserveSSDCallMessage5)
+		CallMessage::PreserveSSDCallMessage7(queryTravelInfo PreserveSSDCallMessage7SendingEnd -> PreserveSSDExecution4StartEnd)
+		ReturnMessage::PreserveSSDCallMessage7Return(PreserveSSDExecution4FinishEnd -> PreserveSSDCallMessage7ReturnReceivingEnd PreserveSSDCallMessage7)
+		CallMessage::PreserveSSDCallMessage9(createNewOrder PreserveSSDCallMessage9SendingEnd -> PreserveSSDExecution5StartEnd)
+		ReturnMessage::PreserveSSDCallMessage9Return(PreserveSSDExecution5FinishEnd -> PreserveSSDCallMessage9ReturnReceivingEnd PreserveSSDCallMessage9)
+		CallMessage::PreserveSSDCallMessage11(buyAssurance PreserveSSDCallMessage11SendingEnd -> PreserveSSDExecution6StartEnd)
+		ReturnMessage::PreserveSSDCallMessage11Return(PreserveSSDExecution6FinishEnd -> PreserveSSDCallMessage11ReturnReceivingEnd PreserveSSDCallMessage11)
+		CallMessage::PreserveSSDCallMessage13(addFoodOrder PreserveSSDCallMessage13SendingEnd -> PreserveSSDExecution7StartEnd)
+		ReturnMessage::PreserveSSDCallMessage13Return(PreserveSSDExecution7FinishEnd -> PreserveSSDCallMessage13ReturnReceivingEnd PreserveSSDCallMessage13)
+		CallMessage::PreserveSSDCallMessage15(addConsign PreserveSSDCallMessage15SendingEnd -> PreserveSSDExecution8StartEnd)
+		ReturnMessage::PreserveSSDCallMessage15Return(PreserveSSDExecution8FinishEnd -> PreserveSSDCallMessage15ReturnReceivingEnd PreserveSSDCallMessage15)
+
+		Execution::PreserveSSDExecution1(PreserveService PreserveSSDExecution1StartEnd PreserveSSDExecution1FinishEnd)
+		Execution::PreserveSSDExecution2(PreserveService PreserveSSDExecution2StartEnd PreserveSSDExecution2FinishEnd)
+		Execution::PreserveSSDExecution3(PreserveService PreserveSSDExecution3StartEnd PreserveSSDExecution3FinishEnd)
+		Execution::PreserveSSDExecution4(PreserveService PreserveSSDExecution4StartEnd PreserveSSDExecution4FinishEnd)
+		Execution::PreserveSSDExecution5(PreserveService PreserveSSDExecution5StartEnd PreserveSSDExecution5FinishEnd)
+		Execution::PreserveSSDExecution6(PreserveService PreserveSSDExecution6StartEnd PreserveSSDExecution6FinishEnd)
+		Execution::PreserveSSDExecution7(PreserveService PreserveSSDExecution7StartEnd PreserveSSDExecution7FinishEnd)
+		Execution::PreserveSSDExecution8(PreserveService PreserveSSDExecution8StartEnd PreserveSSDExecution8FinishEnd)
+
+		MessageEnd::PreserveSSDCallMessage1SendingEnd(Customer PreserveSSDCallMessage1)
+		ExecutionEnd::PreserveSSDExecution1StartEnd(PreserveService PreserveSSDExecution1)
+		ExecutionEnd::PreserveSSDExecution1FinishEnd(PreserveService PreserveSSDExecution1)
+		MessageEnd::PreserveSSDCallMessage1ReturnReceivingEnd(Customer PreserveSSDCallMessage1Return)
+		MessageEnd::PreserveSSDCallMessage3SendingEnd(Customer PreserveSSDCallMessage3)
+		ExecutionEnd::PreserveSSDExecution2StartEnd(PreserveService PreserveSSDExecution2)
+		ExecutionEnd::PreserveSSDExecution2FinishEnd(PreserveService PreserveSSDExecution2)
+		MessageEnd::PreserveSSDCallMessage3ReturnReceivingEnd(Customer PreserveSSDCallMessage3Return)
+		MessageEnd::PreserveSSDCallMessage5SendingEnd(Customer PreserveSSDCallMessage5)
+		ExecutionEnd::PreserveSSDExecution3StartEnd(PreserveService PreserveSSDExecution3)
+		ExecutionEnd::PreserveSSDExecution3FinishEnd(PreserveService PreserveSSDExecution3)
+		MessageEnd::PreserveSSDCallMessage5ReturnReceivingEnd(Customer PreserveSSDCallMessage5Return)
+		MessageEnd::PreserveSSDCallMessage7SendingEnd(Customer PreserveSSDCallMessage7)
+		ExecutionEnd::PreserveSSDExecution4StartEnd(PreserveService PreserveSSDExecution4)
+		ExecutionEnd::PreserveSSDExecution4FinishEnd(PreserveService PreserveSSDExecution4)
+		MessageEnd::PreserveSSDCallMessage7ReturnReceivingEnd(Customer PreserveSSDCallMessage7Return)
+		MessageEnd::PreserveSSDCallMessage9SendingEnd(Customer PreserveSSDCallMessage9)
+		ExecutionEnd::PreserveSSDExecution5StartEnd(PreserveService PreserveSSDExecution5)
+		ExecutionEnd::PreserveSSDExecution5FinishEnd(PreserveService PreserveSSDExecution5)
+		MessageEnd::PreserveSSDCallMessage9ReturnReceivingEnd(Customer PreserveSSDCallMessage9Return)
+		MessageEnd::PreserveSSDCallMessage11SendingEnd(Customer PreserveSSDCallMessage11)
+		ExecutionEnd::PreserveSSDExecution6StartEnd(PreserveService PreserveSSDExecution6)
+		ExecutionEnd::PreserveSSDExecution6FinishEnd(PreserveService PreserveSSDExecution6)
+		MessageEnd::PreserveSSDCallMessage11ReturnReceivingEnd(Customer PreserveSSDCallMessage11Return)
+		MessageEnd::PreserveSSDCallMessage13SendingEnd(Customer PreserveSSDCallMessage13)
+		ExecutionEnd::PreserveSSDExecution7StartEnd(PreserveService PreserveSSDExecution7)
+		ExecutionEnd::PreserveSSDExecution7FinishEnd(PreserveService PreserveSSDExecution7)
+		MessageEnd::PreserveSSDCallMessage13ReturnReceivingEnd(Customer PreserveSSDCallMessage13Return)
+		MessageEnd::PreserveSSDCallMessage15SendingEnd(Customer PreserveSSDCallMessage15)
+		ExecutionEnd::PreserveSSDExecution8StartEnd(PreserveService PreserveSSDExecution8)
+		ExecutionEnd::PreserveSSDExecution8FinishEnd(PreserveService PreserveSSDExecution8)
+		MessageEnd::PreserveSSDCallMessage15ReturnReceivingEnd(Customer PreserveSSDCallMessage15Return)
+
+	}
+
+	Interaction RebookSSD {
+
+		[Participants: Customer RebookService]
+
+		CallMessage::RebookSSDCallMessage1(getOrder RebookSSDCallMessage1SendingEnd -> RebookSSDExecution1StartEnd)
+		ReturnMessage::RebookSSDCallMessage1Return(RebookSSDExecution1FinishEnd -> RebookSSDCallMessage1ReturnReceivingEnd RebookSSDCallMessage1)
+		CallMessage::RebookSSDCallMessage3(getTrip RebookSSDCallMessage3SendingEnd -> RebookSSDExecution2StartEnd)
+		ReturnMessage::RebookSSDCallMessage3Return(RebookSSDExecution2FinishEnd -> RebookSSDCallMessage3ReturnReceivingEnd RebookSSDCallMessage3)
+		CallMessage::RebookSSDCallMessage5(payDifference RebookSSDCallMessage5SendingEnd -> RebookSSDExecution3StartEnd)
+		ReturnMessage::RebookSSDCallMessage5Return(RebookSSDExecution3FinishEnd -> RebookSSDCallMessage5ReturnReceivingEnd RebookSSDCallMessage5)
+		CallMessage::RebookSSDCallMessage7(modifyNewOder RebookSSDCallMessage7SendingEnd -> RebookSSDExecution4StartEnd)
+		ReturnMessage::RebookSSDCallMessage7Return(RebookSSDExecution4FinishEnd -> RebookSSDCallMessage7ReturnReceivingEnd RebookSSDCallMessage7)
+		CallMessage::RebookSSDCallMessage9(setNewRoute RebookSSDCallMessage9SendingEnd -> RebookSSDExecution5StartEnd)
+		ReturnMessage::RebookSSDCallMessage9Return(RebookSSDExecution5FinishEnd -> RebookSSDCallMessage9ReturnReceivingEnd RebookSSDCallMessage9)
+		CallMessage::RebookSSDCallMessage11(setNewTrain RebookSSDCallMessage11SendingEnd -> RebookSSDExecution6StartEnd)
+		ReturnMessage::RebookSSDCallMessage11Return(RebookSSDExecution6FinishEnd -> RebookSSDCallMessage11ReturnReceivingEnd RebookSSDCallMessage11)
+		CallMessage::RebookSSDCallMessage13(setNewSeat RebookSSDCallMessage13SendingEnd -> RebookSSDExecution7StartEnd)
+		ReturnMessage::RebookSSDCallMessage13Return(RebookSSDExecution7FinishEnd -> RebookSSDCallMessage13ReturnReceivingEnd RebookSSDCallMessage13)
+
+		Execution::RebookSSDExecution1(RebookService RebookSSDExecution1StartEnd RebookSSDExecution1FinishEnd)
+		Execution::RebookSSDExecution2(RebookService RebookSSDExecution2StartEnd RebookSSDExecution2FinishEnd)
+		Execution::RebookSSDExecution3(RebookService RebookSSDExecution3StartEnd RebookSSDExecution3FinishEnd)
+		Execution::RebookSSDExecution4(RebookService RebookSSDExecution4StartEnd RebookSSDExecution4FinishEnd)
+		Execution::RebookSSDExecution5(RebookService RebookSSDExecution5StartEnd RebookSSDExecution5FinishEnd)
+		Execution::RebookSSDExecution6(RebookService RebookSSDExecution6StartEnd RebookSSDExecution6FinishEnd)
+		Execution::RebookSSDExecution7(RebookService RebookSSDExecution7StartEnd RebookSSDExecution7FinishEnd)
+
+		MessageEnd::RebookSSDCallMessage1SendingEnd(Customer RebookSSDCallMessage1)
+		ExecutionEnd::RebookSSDExecution1StartEnd(RebookService RebookSSDExecution1)
+		ExecutionEnd::RebookSSDExecution1FinishEnd(RebookService RebookSSDExecution1)
+		MessageEnd::RebookSSDCallMessage1ReturnReceivingEnd(Customer RebookSSDCallMessage1Return)
+		MessageEnd::RebookSSDCallMessage3SendingEnd(Customer RebookSSDCallMessage3)
+		ExecutionEnd::RebookSSDExecution2StartEnd(RebookService RebookSSDExecution2)
+		ExecutionEnd::RebookSSDExecution2FinishEnd(RebookService RebookSSDExecution2)
+		MessageEnd::RebookSSDCallMessage3ReturnReceivingEnd(Customer RebookSSDCallMessage3Return)
+		MessageEnd::RebookSSDCallMessage5SendingEnd(Customer RebookSSDCallMessage5)
+		ExecutionEnd::RebookSSDExecution3StartEnd(RebookService RebookSSDExecution3)
+		ExecutionEnd::RebookSSDExecution3FinishEnd(RebookService RebookSSDExecution3)
+		MessageEnd::RebookSSDCallMessage5ReturnReceivingEnd(Customer RebookSSDCallMessage5Return)
+		MessageEnd::RebookSSDCallMessage7SendingEnd(Customer RebookSSDCallMessage7)
+		ExecutionEnd::RebookSSDExecution4StartEnd(RebookService RebookSSDExecution4)
+		ExecutionEnd::RebookSSDExecution4FinishEnd(RebookService RebookSSDExecution4)
+		MessageEnd::RebookSSDCallMessage7ReturnReceivingEnd(Customer RebookSSDCallMessage7Return)
+		MessageEnd::RebookSSDCallMessage9SendingEnd(Customer RebookSSDCallMessage9)
+		ExecutionEnd::RebookSSDExecution5StartEnd(RebookService RebookSSDExecution5)
+		ExecutionEnd::RebookSSDExecution5FinishEnd(RebookService RebookSSDExecution5)
+		MessageEnd::RebookSSDCallMessage9ReturnReceivingEnd(Customer RebookSSDCallMessage9Return)
+		MessageEnd::RebookSSDCallMessage11SendingEnd(Customer RebookSSDCallMessage11)
+		ExecutionEnd::RebookSSDExecution6StartEnd(RebookService RebookSSDExecution6)
+		ExecutionEnd::RebookSSDExecution6FinishEnd(RebookService RebookSSDExecution6)
+		MessageEnd::RebookSSDCallMessage11ReturnReceivingEnd(Customer RebookSSDCallMessage11Return)
+		MessageEnd::RebookSSDCallMessage13SendingEnd(Customer RebookSSDCallMessage13)
+		ExecutionEnd::RebookSSDExecution7StartEnd(RebookService RebookSSDExecution7)
+		ExecutionEnd::RebookSSDExecution7FinishEnd(RebookService RebookSSDExecution7)
+		MessageEnd::RebookSSDCallMessage13ReturnReceivingEnd(Customer RebookSSDCallMessage13Return)
+
+	}
+
+	Service TrainticketSystem {
+
+		[Operation]
+		queryForTravel(info)
+		cancelTicket(orderId, loginId)
+		drawBack()
+
+	}
+
+	Service ThirdPartyServices {
+
+	}
+
+	Service QueryForTravelService {
+
+		[Operation]
+		queryStation(stationId)
+		queryTrain(trainId)
+		queryRoute(routeId)
+		showPrice(tripId)
+
+	}
+
+	Service CancelTicketService {
+
+		[Operation]
+		queryOrder(orderId)
+		modifyOrder()
+		caculate()
+		drawback(accountId, price)
+		queryUser(userId)
+		sendNotification(message)
+
+	}
+
+	Service PayService {
+
+		[Operation]
+		queryOder(orderId)
+		queryAccout(accoutId)
+		sendEmial(message)
+
+	}
+
+	Service PreserveService {
+
+		[Operation]
+		checkSecurity()
+		queryContacts()
+		queryTravels()
+		queryTravelInfo()
+		createNewOrder()
+		buyAssurance()
+		addFoodOrder()
+		addConsign()
+
+	}
+
+	Service RebookService {
+
+		[Operation]
+		getOrder(orderId)
+		getTrip(tripId)
+		modifyNewOder(orderId)
+		setNewRoute(routeId)
+		setNewTrain(trainId)
+		setNewSeat(seatId)
+
+	}
+
+	Contract TrainticketSystem::excuteOrder(): Boolean {
+
+		precondition:
+			true
+		postcondition:
+			true
+	}
+
+	Contract TrainticketSystem::queryForTravel(info : Travel) : Boolean {
+
+		definition:
+			station:Station = Station.allInstance(),
+			station2:Station = Station.allInstance(),
+			train:Train = Train.allInstance(),
+			route:Route = Route.allInstance(),
+			price:Price = Price.allInstance()
+
+		precondition:
+			true
+		postcondition:
+			true
+	}
+
+	Contract TrainticketSystem::cancelTicket(orderId : String, loginId : String) : Boolean {
+
+		definition:
+			order:Order = Order.allInstance(),
+			accout:Accout = Accout.allInstance()
+
+		precondition:
+			true
+		postcondition:
+			Order.allInstance()->excludes(order) and
+			drawbackMoney() and
+			order_cancel_success() and
+			result = true
+	}
+
+	Contract TrainticketSystem::getPriceByWeightAndRegion() : Boolean {
+
+		definition:
+			priceConfig:PriceConfig = PriceConfig.allInstance()
+
+		precondition:
+			true
+		postcondition:
+			true
+	}
+
+	Contract TrainticketSystem::executeTicket(): Boolean {
+
+		definition:
+			order:Order = Order.allInstance()
+
+		precondition:
+			true
+		postcondition:
+			excuteOrder() and
+			result = true
+	}
+
+	Contract TrainticketSystem::pay(): Boolean {
+
+		definition:
+			order:Order = Order.allInstance(),
+			payment:Payment = Payment.allInstance()
+
+		precondition:
+			true
+		postcondition:
+			result = true
+	}
+
+	Contract TrainticketSystem::drawBack() : Boolean {
+
+		precondition:
+			true
+		postcondition:
+			true
+	}
+
+	Contract TrainticketSystem::payDifference(): Boolean {
+
+		definition:
+			order:Order = Order.allInstance(),
+			payment:Payment = Payment.allInstance()
+
+		precondition:
+			true
+		postcondition:
+			result = true
+	}
+
+	Contract TrainticketSystem::order_cancel_success(): Boolean {
+
+		precondition:
+			true
+		postcondition:
+			true
+	}
+
+	Contract TrainticketSystem::preserve_success(): Boolean {
+
+		precondition:
+			true
+		postcondition:
+			true
+	}
+
+	Contract TrainticketSystem::order_create_success(): Boolean {
+
+		precondition:
+			true
+		postcondition:
+			true
+	}
+
+	Contract TrainticketSystem::order_changed_success(): Boolean {
+
+		precondition:
+			true
+		postcondition:
+			true
+	}
+
+	Contract TrainticketSystem::preserve(): Boolean {
+
+		definition:
+			securityConfig:SecurityConfig = securityInfoCheck(),
+			contract:Contacts = Contracts.allInstance(),
+			travels:Set(Travel) = Travel.allInstance(),
+			travel:Travel = queryForTravel(),
+			user:User = User.allInstance()
+
+		precondition:
+			true
+		postcondition:
+			Order.allInstance()->includes(o) and
+			distributeSeat() and
+			Assurance.allInstance()->includes(a) and
+			Food.allInstance()->includes(f) and
+			Consign.allInstance()->includes(c) and
+			order_create_success() and
+			result = true
+	}
+
+	Contract TrainticketSystem::securityInfoCheck(): Boolean {
+
+		definition:
+			order:Order = Order.allInstance(),
+			securityConfig:SecurityConfig = SecurityConfig.allInstance()
+
+		precondition:
+			true
+		postcondition:
+			true
+	}
+
+	Contract TrainticketSystem::rebook(): Boolean {
+
+		definition:
+			order:Order = Order.allInstance(),
+			travels:Set(Travel) = Travel.allInstance()
+
+		precondition:
+			true
+		postcondition:
+			distributeSeat() and
+			payDifference() and
+			order_changed_success() and
+			result = true
+	}
+
+	Contract TrainticketSystem::getCheapestRoutes(): Boolean {
+
+		definition:
+			travel:Travel = Travel.allInstance()
+
+		precondition:
+			true
+		postcondition:
+			true
+	}
+
+	Contract TrainticketSystem::getQuickestRoutes(): Boolean {
+
+		definition:
+			travel:Travel = Travel.allInstance()
+
+		precondition:
+			true
+		postcondition:
+			true
+	}
+
+	Contract TrainticketSystem::getMinStopRoutes(): Boolean {
+
+		definition:
+			travel:Travel = Travel.allInstance()
+
+		precondition:
+			true
+		postcondition:
+			true
+	}
+
+	Contract TrainticketSystem::distributeSeat(): Boolean {
+
+		definition:
+			order:Order = Order.allInstance()
+
+		precondition:
+			true
+		postcondition:
+			true
+	}
+
+	Contract TrainticketSystem::getLeftTicketOfInterval(): Boolean {
+
+		definition:
+			order:Order = Order.allInstance(),
+			config:Config = Config.allInstance()
+
+		precondition:
+			true
+		postcondition:
+			true
+	}
+
+	Contract TrainticketSystem::getTransferResult(): Boolean {
+
+		definition:
+			travel:Set(Travel) = Travels.allInstance()
+
+		precondition:
+			true
+		postcondition:
+			true
+	}
+
+	Contract TrainticketSystem::getByCheapest(): Boolean {
+
+		definition:
+			route:Route = getCheapestRoutes(),
+			train:Train = Train.allInstance(),
+			seat:Seat = getLeftTicketOfInterval()
+
+		precondition:
+			true
+		postcondition:
+			true
+	}
+
+	Contract TrainticketSystem::getByQuickest(): Boolean {
+
+		definition:
+			route:Route = getQuickestRoutes(),
+			train:Train = Train.allInstance(),
+			seat:Seat = getLeftTicketOfInterval()
+
+		precondition:
+			true
+		postcondition:
+			true
+	}
+
+	Contract TrainticketSystem::getByMinStation(): Boolean {
+
+		definition:
+			route:Route = getMinStopRoutes(),
+			train:Train = Train.allInstance(),
+			seat:Seat = getLeftTicketOfInterval()
+
+		precondition:
+			true
+		postcondition:
+			true
+	}
+
+}
+
+DomainModel Trainticket {
+
+	@AutoCRUD Entity Price {
+		Id : String
+		TrainType : String
+		RouteId : String
+		BasicPriceRate : Real
+		FirstClassPriceRate : Real
+
+		[Refer]
+		Train : Train Association
+		Route : Route Association
+		Info : PriceInfo* Association
+	}
+
+	Entity PriceInfo {
+		Id : String
+		TrainType : String
+		RouteId : String
+		BasicPriceRate : Real
+		FirstClassPriceRate : Real
+
+		[Refer]
+		Train : Train Association
+		Route : Route Association
+	}
+
+	@AutoCRUD Entity Assurance {
+		Id : String
+		OrderId : String
+		Type : AssuranceType[VEHICLE|OTHERS]
+
+		[Refer]
+		AssurancetoAssuranceTypeBean : AssuranceTypeBean* Association
+		AssurancetoPlainAssurance : PlainAssurance* Association
+		BelongedToUser : User Association
+	}
+
+	Entity AssuranceTypeBean {
+		Index : Integer
+		Name : String
+		Price : Real
+	}
+
+	Entity PlainAssurance {
+		Id : String
+		OrderId : String
+		TypeIndex : Integer
+		TypeName : String
+		TypePrice : Real
+	}
+
+	@AutoCRUD Entity User {
+		UserId : String
+		UserName : String
+		Password : String
+		Roles : Set(String)
+		Gender : Integer
+		DocumentType : Integer
+		DocumentNum : String
+		Email : String
+
+		[Refer]
+		Own : Assurance* Association
+	}
+
+	Entity AuthDto {
+		UserId : String
+		Username : String
+		Password : String
+
+		[Refer]
+		BelongedUser : User Association
+	}
+
+	Entity BasicAuthDto {
+		Username : String
+		Password : String
+		VerficationCode : String
+
+		[Refer]
+		BelongedUser : User Association
+	}
+
+	Entity TokenDto {
+		UserId : String
+		Username : String
+		Token : String
+
+		[Refer]
+		BelongedUser : User Association
+	}
+
+	Entity GetAccountByIdInfo {
+		AccoutId : String
+
+		[Refer]
+		Accout : Accout Association
+	}
+
+	Entity GetAccountByIdResult {
+		Status : Boolean
+		Message : String
+		Accout : Accout
+
+		[Refer]
+		Accout : Accout Association
+	}
+
+	Entity GetOrderByIdInfo {
+		OrderId : String
+
+		[Refer]
+		Order : Order Association
+	}
+
+	@AutoCRUD Entity Order {
+		Id : String
+		BoughtData : String
+		TravelDate : String
+		TravelTime : String
+		AccoutId : String
+		ContactsName : String
+		DocumentType : Integer
+		ContactsDocumentNumber : String
+		TrainNumber : String
+		CoachNumber : Integer
+		SeatClass : Integer
+		SeatNumber : String
+		From : String
+		To : String
+		Status : Integer
+		Price : String
+
+		[Refer]
+		AlterInfo : OrderAlterInfo* Association
+		OrderInfo : OrderInfo Association
+	}
+
+	@AutoCRUD Entity OrderAlterInfo {
+		AccoutId : String
+		PreviousOrderId : String
+		LoginToken : String
+		NewOrderInfo : Order
+
+		[Refer]
+		NewOrderInfo : Order Association
+	}
+
+	@AutoCRUD Entity OrderInfo {
+		LoginId : String
+		TravelDateStart : String
+		TravelDateEnd : String
+		BoughtDateStart : String
+		BoughtDateEnd : String
+		State : Integer
+		EnableTravelDateQuery : Boolean
+		EnableBoughtDateQuery : Boolean
+		EnableStateQuery : Boolean
+
+		[Refer]
+		Order : Order Association
+	}
+
+	@AutoCRUD Entity Accout {
+		Id : String
+		AccoutId : String
+		LoginId : String
+		Password : String
+		Gender : String
+		Name : String
+		Money : String
+		DocumentType : Integer
+		DocumentNum : String
+		Email : String
+
+		[Refer]
+		Balances : Balance* Association
+	}
+
+	@AutoCRUD Entity Config {
+		Name : String
+		Value : String
+		Description : String
+	}
+
+	@AutoCRUD Entity ConsignPrice {
+		Id : String
+		Index : Integer
+		InitialWeight : Real
+		InitialPrice : Real
+		WithinPrice : Real
+		BeyondPrice : Real
+
+		[Refer]
+		Consigns : Consign* Association
+	}
+
+	@AutoCRUD Entity Consign {
+		Id : String
+		OrderId : String
+		AccoutId : String
+		HandleDate : String
+		TargetDate : String
+		From : String
+		To : String
+		Consignee : String
+		Phone : String
+		Weight : Real
+		IsWithin : Boolean
+
+		[Refer]
+		Price : ConsignPrice Association
+		Record : ConsignRecord* Association
+	}
+
+	@AutoCRUD Entity ConsignRecord {
+		Id : String
+		OrderId : String
+		HandleDate : String
+		TargetDate : String
+		From : String
+		To : String
+		Consignee : String
+		Phone : String
+		Weight : Real
+		IsWithin : Boolean
+
+		[Refer]
+		Consign : Consign Association
+	}
+
+	Entity GetPriceDomain {
+		Weight : Real
+		IsWithinRegion : Boolean
+	}
+
+	Entity InsertConsignRecordResult {
+		Status : Boolean
+		Message : String
+
+		[Refer]
+		ConsignRecord : ConsignRecord Association
+	}
+
+	@AutoCRUD Entity Contacts {
+		Id : String
+		AccountId : String
+		Name : String
+		DocumentNumber : String
+		PhoneNumber : String
+	}
+
+	@AutoCRUD Entity Delivery {
+		Id : String
+		OrderId : String
+		FoodName : String
+		StoreName : String
+		StationName : String
+
+		[Refer]
+		Info : DeliveryInfo* Association
+	}
+
+	Entity DeliveryInfo {
+		OrderId : String
+		DeliveryTime : String
+
+		[Refer]
+		Delivery : Delivery Association
+	}
+
+	@AutoCRUD Entity FoodDeliveryOrder {
+		Id : String
+		StationFoodStoreId : String
+		FoodList : Set(Food)
+		TripId : String
+		SeatNo : Integer
+		CreatedTime : String
+		DeliveryTime : String
+		DeliveryFee : String
+
+		[Refer]
+		Food : Food* Association
+	}
+
+	Entity SeatInfo {
+		OrderId : String
+		SeatNo : Integer
+	}
+
+	Entity StationFoodStore {
+		Id : String
+		StationId : String
+		StoreName : String
+		Telephone : String
+		BusinessTime : String
+		DeliveryFee : Real
+		FoodList : Set(Food)
+
+		[Refer]
+		Food : Food* Association
+	}
+
+	Entity TripOrderInfo {
+		OrderId : String
+		TripId : String
+	}
+
+	Entity AllTripFood {
+		TrainFoodList : Set(Food)
+		FoodStoreList : Set(StationFoodStore)
+	}
+
+	@AutoCRUD Entity Food {
+		Id : String
+		OrderId : String
+		FoodType : Integer
+		StationName : String
+		StoreName : String
+		FoodName : String
+		Price : Real
+	}
+
+	Entity Balance {
+		UserId : String
+		Balance : String
+
+		[Refer]
+		Accout : Accout* Association
+	}
+
+	@AutoCRUD Entity Money {
+		Id : String
+		UserId : String
+		Name : String
+		Type : MoneyType[A|D]
+	}
+
+	@AutoCRUD Entity Payment {
+		Id : String
+		OrderId : String
+		UserId : String
+		Price : String
+		Type : PaymentType[D|P|O|E]
+
+		[Refer]
+		PaymentInfo : OutsidePaymentInfo* Association
+		Info : PaymentInfo* Association
+	}
+
+	Entity OutsidePaymentInfo {
+		OrderId : String
+		Price : String
+		UserId : String
+	}
+
+	Entity PaymentInfo {
+		UserId : String
+		OrderId : String
+		TripId : String
+		Price : String
+
+		[Refer]
+		Payment : Payment Association
+	}
+
+	Entity Mail {
+		MailFrom : String
+		MailTo : String
+		MailCc : String
+		MailBcc : String
+		MailSubject : String
+		MailContent : String
+		ContentType : String
+		Attachment : Set(String)
+	}
+
+	@AutoCRUD Entity NotifyInfo {
+		Id : String
+		SendStatus : Boolean
+		Email : String
+		OrderNumber : String
+		UserName : String
+		StartPlace : String
+		EndPlace : String
+		StartTime : String
+		Time : String
+		SeatClass : String
+		SeatNumber : String
+		Price : String
+	}
+
+	@AutoCRUD Entity PriceConfig {
+		Id : String
+		TrainType : String
+		RouteId : String
+		BasicPriceRate : Real
+		FirstClassPriceRate : Real
+	}
+
+	Entity RebookInfo {
+		LoginId : String
+		OrderId : String
+		OldTripId : String
+		TripId : String
+		SeatType : Integer
+		Time : String
+	}
+
+	@AutoCRUD Entity Route {
+		Id : String
+		Stations : Set(String)
+		Distances : Set(Integer)
+		StartStation : String
+		EndStation : String
+
+		[Refer]
+		Info : RouteInfo* Association
+	}
+
+	Entity RouteInfo {
+		Id : String
+		StationList : String
+		DistanceList : Integer
+		StartStation : String
+		EndStation : String
+	}
+
+	@AutoCRUD Entity SecurityConfig {
+		Id : String
+		Name : String
+		Value : String
+		Description : String
+	}
+
+	@AutoCRUD Entity Station {
+		Id : String
+		Name : String
+		StayTime : Integer
+	}
+
+	@AutoCRUD Entity TrainFood {
+		Id : String
+		TripId : String
+		FoodList : Set(Food)
+
+		[Refer]
+		Food : Food* Association
+	}
+
+	@AutoCRUD Entity Train {
+		Id : String
+		Name : String
+		EconomyClass : Integer
+		ConfortClass : Integer
+		AverageSpeed : Integer
+	}
+
+	@AutoCRUD Entity Seat {
+		TravelDate : String
+		TrainNumber : String
+		StartStation : String
+		DestStation : String
+		SeatType : Integer
+		Stations : Set(String)
+
+		[Refer]
+		Stations : Station* Association
+	}
+
+	Entity Travel {
+		Trip : Trip
+		StartPlace : String
+		EndPlace : String
+		DepartureTime : String
+
+		[Refer]
+		Trip : Trip Association
+	}
+
+	@AutoCRUD Entity Trip {
+		Id : String
+		TripId : TripId
+		TrainName : String
+		RouteId : String
+		StartStationName : String
+		StationsName : String
+		TerminalStationName : String
+		StartTime : String
+		EndTime : String
+
+		[Refer]
+		TripId : TripId Association
+		Train : Train Association
+		Route : Route Association
+	}
+
+	Entity TripId {
+		Type : Type[G|D|Z|T|K]
+		Number : String
+	}
+
+	Entity AdminTrip {
+		Trip : Trip
+		Train : Train
+		Route : Route
+
+		[Refer]
+		Trip : Trip Association
+		Train : Train Association
+	}
+
+	Entity TripAllDetail {
+		Status : Boolean
+		Message : String
+		TripResponse : TripResponse
+		Trip : Trip
+
+		[Refer]
+		TripResponse : TripResponse Association
+		Trip : Trip Association
+	}
+
+	Entity TripResponse {
+		TripId : TripId
+		TrainName : String
+		RouteId : String
+		StartStationName : String
+		StationsName : String
+		TerminalStationName : String
+		StartTime : String
+		EndTime : String
+		EconomyClass : Integer
+		ConfortClass : Integer
+		PriceForEconomyClass : String
+		PriceForConfortClass : String
+
+		[Refer]
+		TripId : TripId Association
+	}
+
+	Entity TravelAdvanceResultInfo {
+		TripId : String
+		TrainTypeId : String
+		StartStation : String
+		EndStation : String
+		StopStations : Set(String)
+		PriceForSecondClassSeat : String
+		NumberOfRestTicketSecondClass : Integer
+		PriceForFirstClassSeat : String
+		NumberOfRestTicketFirstClass : Integer
+		StartTime : String
+		EndTime : String
+
+		[Refer]
+		Trip : Trip Association
+		Train : Train Association
+		Station : Station* Association
+		Seat : Seat* Association
+	}
+
+	Entity TransferTravelResult {
+		FirstSectionResult : Set(TripResponse)
+		SecondSectionResult : Set(TripResponse)
+
+		[Refer]
+		TripResponse : TripResponse* Association
+	}
+
+	Entity TravelAdvanceResultUnit {
+		TripId : String
+		TrainType : String
+		StartStation : String
+		EndStation : String
+		StopStations : Set(String)
+		PriceForSecondClassSet : String
+		NumberOfRestTicketSecondSeat : Integer
+		StartTime : String
+		EndTime : String
+	}
+
+	Entity WaitListOrder {
+		Id : String
+		TravelTime : String
+		AccountId : String
+		ContactsId : String
+		ContactsName : String
+		ContactsDocumentType : Integer
+		ContactsDocumentNumber : String
+		TrainNumber : String
+		SeatType : Integer
+
+		[Refer]
+		Accout : Accout Association
+		Train : Train Association
+		Seat : Seat Association
+	}
+
+	Entity WaitListOrderVO {
+		AccoutId : String
+		ContactsId : String
+		TripId : String
+		SeatType : Integer
+		Time : String
+		From : String
+		To : String
+		Price : String
+
+		[Refer]
+		Trip : Trip Association
+		Accout : Accout Association
+		Seat : Seat Association
+	}
+
+}
+

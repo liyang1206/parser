@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xmi:XMI xmlns:req="http://www.example.org/req" xmi:version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <req:RequirementModel>
+    <UseCaseModel name="airms.remodel">
+      <usecasecontext name="Microservice 0">
+        <uc name="scoring"/>
+        <uc name="notAcceptAa"/>
+        <uc name="acceptedAa"/>
+      </usecasecontext>
+      <usecasecontext name="Microservice 1">
+        <uc name="setWorkTask"/>
+      </usecasecontext>
+      <usecasecontext name="Microservice 2">
+        <uc name="arbitration"/>
+        <uc name="workReportSubmit"/>
+        <uc name="submitRepair"/>
+        <uc name="completedAa"/>
+        <uc name="tbInfo"/>
+        <uc name="acceptedBa"/>
+        <uc name="completedBa"/>
+      </usecasecontext>
+      <usecasecontext name="Microservice 3">
+        <uc name="setOperationStatus"/>
+        <uc name="userLogin"/>
+        <uc name="notAcceptBa"/>
+        <uc name="allocation"/>
+        <uc name="transmit"/>
+        <uc name="backtransmit"/>
+        <uc name="setTerminalEquipment"/>
+        <uc name="approval"/>
+        <uc name="receiveTb"/>
+        <uc name="completeTb"/>
+        <uc name="rocessingFees"/>
+      </usecasecontext>
+      <actor name="Ordinary" uc="/0/@UseCaseModel/@usecasecontext.0/@uc.2 /0/@UseCaseModel/@usecasecontext.0/@uc.0 /0/@UseCaseModel/@usecasecontext.0/@uc.1 /0/@UseCaseModel/@usecasecontext.2/@uc.2 /0/@UseCaseModel/@usecasecontext.2/@uc.3"/>
+      <actor name="Master" uc="/0/@UseCaseModel/@usecasecontext.3/@uc.2 /0/@UseCaseModel/@usecasecontext.2/@uc.5 /0/@UseCaseModel/@usecasecontext.2/@uc.6"/>
+      <actor name="Worker" uc="/0/@UseCaseModel/@usecasecontext.3/@uc.8 /0/@UseCaseModel/@usecasecontext.3/@uc.0 /0/@UseCaseModel/@usecasecontext.3/@uc.9"/>
+      <actor name="Manage" uc="/0/@UseCaseModel/@usecasecontext.3/@uc.7 /0/@UseCaseModel/@usecasecontext.2/@uc.0"/>
+      <actor name="Share" uc="/0/@UseCaseModel/@usecasecontext.3/@uc.1 /0/@UseCaseModel/@usecasecontext.2/@uc.1"/>
+    </UseCaseModel>
+    <DomainModel name="airms.remodel">
+      <systeminterface xsi:type="req:ProvideInterface" name="ProvideEntityofRoleDepartmentTbRepairExtra" entitycontext="/0/@DomainModel/@entitycontext.0" receiveinterface="/0/@DomainModel/@systeminterface.8"/>
+      <systeminterface xsi:type="req:ProvideInterface" name="ProvideEntityofTerminalEquipmentRoleDepartmentTbRepairExtraProcessingFeesDeviceInfo" entitycontext="/0/@DomainModel/@entitycontext.0" receiveinterface="/0/@DomainModel/@systeminterface.10"/>
+      <systeminterface xsi:type="req:ProvideInterface" name="ProvideEntityofUser" entitycontext="/0/@DomainModel/@entitycontext.2" receiveinterface="/0/@DomainModel/@systeminterface.6"/>
+      <systeminterface xsi:type="req:ProvideInterface" name="ProvideEntityofUser" entitycontext="/0/@DomainModel/@entitycontext.2" receiveinterface="/0/@DomainModel/@systeminterface.11"/>
+      <systeminterface xsi:type="req:ProvideInterface" name="ProvideEntityofTbRepairDeviceLocationGroupEquipmentFailureType" entitycontext="/0/@DomainModel/@entitycontext.3" receiveinterface="/0/@DomainModel/@systeminterface.7"/>
+      <systeminterface xsi:type="req:ProvideInterface" name="ProvideEntityofTbRepairEquipmentFailureType" entitycontext="/0/@DomainModel/@entitycontext.3" receiveinterface="/0/@DomainModel/@systeminterface.9"/>
+      <systeminterface xsi:type="req:ReceiveInterface" name="ReceiveEntityofUser" entitycontext="/0/@DomainModel/@entitycontext.0" provideinterface="/0/@DomainModel/@systeminterface.2"/>
+      <systeminterface xsi:type="req:ReceiveInterface" name="ReceiveEntityofTbRepairDeviceLocationGroupEquipmentFailureType" entitycontext="/0/@DomainModel/@entitycontext.0" provideinterface="/0/@DomainModel/@systeminterface.4"/>
+      <systeminterface xsi:type="req:ReceiveInterface" name="ReceiveEntityofRoleDepartmentTbRepairExtra" entitycontext="/0/@DomainModel/@entitycontext.2" provideinterface="/0/@DomainModel/@systeminterface.0"/>
+      <systeminterface xsi:type="req:ReceiveInterface" name="ReceiveEntityofTbRepairEquipmentFailureType" entitycontext="/0/@DomainModel/@entitycontext.2" provideinterface="/0/@DomainModel/@systeminterface.5"/>
+      <systeminterface xsi:type="req:ReceiveInterface" name="ReceiveEntityofTerminalEquipmentRoleDepartmentTbRepairExtraProcessingFeesDeviceInfo" entitycontext="/0/@DomainModel/@entitycontext.3" provideinterface="/0/@DomainModel/@systeminterface.1"/>
+      <systeminterface xsi:type="req:ReceiveInterface" name="ReceiveEntityofUser" entitycontext="/0/@DomainModel/@entitycontext.3" provideinterface="/0/@DomainModel/@systeminterface.3"/>
+      <systeminterface xsi:type="req:ProvideInterface" name="UserInterfaceofMS0" entitycontext="/0/@DomainModel/@entitycontext.0"/>
+      <systeminterface xsi:type="req:ProvideInterface" name="UserInterfaceofMS1" entitycontext="/0/@DomainModel/@entitycontext.1"/>
+      <systeminterface xsi:type="req:ProvideInterface" name="UserInterfaceofMS2" entitycontext="/0/@DomainModel/@entitycontext.2"/>
+      <systeminterface xsi:type="req:ProvideInterface" name="UserInterfaceofMS3" entitycontext="/0/@DomainModel/@entitycontext.3"/>
+      <entitycontext name="EntityContext0" systeminterface="/0/@DomainModel/@systeminterface.0 /0/@DomainModel/@systeminterface.1 /0/@DomainModel/@systeminterface.6 /0/@DomainModel/@systeminterface.7 /0/@DomainModel/@systeminterface.12">
+        <userinterface name="UserInterface">
+          <operation name="scoring()"/>
+          <operation name="notAcceptAa()"/>
+          <operation name="acceptedAa()"/>
+        </userinterface>
+        <userinterface name="InterSystemInterface">
+          <operation name="findTerminalEquipmentbyID()"/>
+          <operation name="findRolebyID()"/>
+          <operation name="findDepartmentbyID()"/>
+          <operation name="findTbRepairExtrabyID()"/>
+          <operation name="findProcessingFeesbyID()"/>
+          <operation name="findDeviceInfobyID()"/>
+        </userinterface>
+        <entity name="TerminalEquipment">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="Name">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Address">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Description">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Type">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="Remark">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <reference name="BelongedDeviceInfo" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.0/@entity.5"/>
+        </entity>
+        <entity name="Role">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="RoleCode">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="Remark">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+        <entity name="Department">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="Name">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="ContactRerson">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Principal">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Phone">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="BriefInfo">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="DescribeContent">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Remark">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+        <entity name="TbRepairExtra">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="Admin">
+            <type xsi:type="req:PrimitiveTypeCS" name="Boolean"/>
+          </attributes>
+          <attributes name="IsReject">
+            <type xsi:type="req:PrimitiveTypeCS" name="Boolean"/>
+          </attributes>
+          <attributes name="RejectCause">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="RelayNum">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="Arbitrate">
+            <type xsi:type="req:PrimitiveTypeCS" name="Boolean"/>
+          </attributes>
+          <attributes name="IsAccept">
+            <type xsi:type="req:PrimitiveTypeCS" name="Boolean"/>
+          </attributes>
+          <attributes name="IsComplete">
+            <type xsi:type="req:PrimitiveTypeCS" name="Boolean"/>
+          </attributes>
+          <attributes name="Time">
+            <type xsi:type="req:PrimitiveTypeCS" name="Date"/>
+          </attributes>
+          <attributes name="Resolvent">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Cause">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <reference name="BelongedAssignDepart" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.0/@entity.2"/>
+          <reference name="BelongedRelayDep" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.0/@entity.2"/>
+        </entity>
+        <entity name="ProcessingFees">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="ProjectName">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Price">
+            <type xsi:type="req:PrimitiveTypeCS" name="Real"/>
+          </attributes>
+          <attributes name="Number">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="TotalPrice">
+            <type xsi:type="req:PrimitiveTypeCS" name="Real"/>
+          </attributes>
+          <attributes name="Remake">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+        <entity name="DeviceInfo">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="Name">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Brand">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Type">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Address">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="AdminName">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="ContactsName">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Status">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="Remark">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <reference name="BelongedDAG" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.0/@entity.7"/>
+          <reference name="BelongedDepartment" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.0/@entity.2"/>
+        </entity>
+        <entity name="DeviceStatus">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="Name">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Remark">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+        <entity name="DeviceAssociationGroup">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="Name">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Remark">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+      </entitycontext>
+      <entitycontext name="EntityContext1" systeminterface="/0/@DomainModel/@systeminterface.13">
+        <userinterface name="UserInterface">
+          <operation name="setWorkTask()"/>
+        </userinterface>
+        <userinterface name="InterSystemInterface"/>
+        <entity name="WorkTask">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="StaffName">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="AdminName">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Phone">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Section">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Remark">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+      </entitycontext>
+      <entitycontext name="EntityContext2" systeminterface="/0/@DomainModel/@systeminterface.2 /0/@DomainModel/@systeminterface.3 /0/@DomainModel/@systeminterface.8 /0/@DomainModel/@systeminterface.9 /0/@DomainModel/@systeminterface.14">
+        <userinterface name="UserInterface">
+          <operation name="arbitration()"/>
+          <operation name="workReportSubmit()"/>
+          <operation name="submitRepair()"/>
+          <operation name="completedAa()"/>
+          <operation name="tbInfo()"/>
+          <operation name="acceptedBa()"/>
+          <operation name="completedBa()"/>
+        </userinterface>
+        <userinterface name="InterSystemInterface">
+          <operation name="findUserbyID()"/>
+        </userinterface>
+        <entity name="WorkReport">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="Name">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Content">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Time">
+            <type xsi:type="req:PrimitiveTypeCS" name="Date"/>
+          </attributes>
+        </entity>
+        <entity name="User">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="Name">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Password">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Phone">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+      </entitycontext>
+      <entitycontext name="EntityContext3" systeminterface="/0/@DomainModel/@systeminterface.4 /0/@DomainModel/@systeminterface.5 /0/@DomainModel/@systeminterface.10 /0/@DomainModel/@systeminterface.11 /0/@DomainModel/@systeminterface.15">
+        <userinterface name="UserInterface">
+          <operation name="setOperationStatus()"/>
+          <operation name="userLogin()"/>
+          <operation name="notAcceptBa()"/>
+          <operation name="allocation()"/>
+          <operation name="transmit()"/>
+          <operation name="backtransmit()"/>
+          <operation name="setTerminalEquipment()"/>
+          <operation name="approval()"/>
+          <operation name="receiveTb()"/>
+          <operation name="completeTb()"/>
+          <operation name="rocessingFees()"/>
+        </userinterface>
+        <userinterface name="InterSystemInterface">
+          <operation name="findTbRepairbyID()"/>
+          <operation name="findDeviceLocationGroupbyID()"/>
+          <operation name="findEquipmentFailureTypebyID()"/>
+        </userinterface>
+        <entity name="OperationStatus">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="Remark">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Status">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Value">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="ValueUnit">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Time">
+            <type xsi:type="req:PrimitiveTypeCS" name="Date"/>
+          </attributes>
+          <attributes name="Name">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+        <entity name="TbRepair">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="Repairname">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Phone">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Place">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="RepairsStatus">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="DeviceId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Status">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="DescribeContent">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Score">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="Remark">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Time">
+            <type xsi:type="req:PrimitiveTypeCS" name="Date"/>
+          </attributes>
+          <reference name="BelongedEFT" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.3/@entity.3"/>
+        </entity>
+        <entity name="DeviceLocationGroup">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="Name">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Remark">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+        <entity name="EquipmentFailureType">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="Name">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="DescribeContent">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Remark">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+      </entitycontext>
+    </DomainModel>
+  </req:RequirementModel>
+</xmi:XMI>

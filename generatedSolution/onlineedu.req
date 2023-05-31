@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xmi:XMI xmlns:req="http://www.example.org/req" xmi:version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <req:RequirementModel>
+    <UseCaseModel name="onlineedu.remodel">
+      <usecasecontext name="Microservice 0">
+        <uc name="listByDictCodeAndName"/>
+        <uc name="listByDictCode"/>
+      </usecasecontext>
+      <usecasecontext name="Microservice 1">
+        <uc name="toMenuTree"/>
+        <uc name="sendTextEmail"/>
+        <uc name="sendFullTextEmail"/>
+        <uc name="sendHtmlEmail"/>
+      </usecasecontext>
+      <usecasecontext name="Microservice 2">
+        <uc name="getUserMenu"/>
+      </usecasecontext>
+      <actor name="UserTwo" uc="/0/@UseCaseModel/@usecasecontext.0/@uc.0 /0/@UseCaseModel/@usecasecontext.0/@uc.0 /0/@UseCaseModel/@usecasecontext.0/@uc.0"/>
+      <actor name="User" uc="/0/@UseCaseModel/@usecasecontext.1/@uc.2 /0/@UseCaseModel/@usecasecontext.0/@uc.0 /0/@UseCaseModel/@usecasecontext.0/@uc.0 /0/@UseCaseModel/@usecasecontext.2/@uc.0 /0/@UseCaseModel/@usecasecontext.1/@uc.0 /0/@UseCaseModel/@usecasecontext.1/@uc.1 /0/@UseCaseModel/@usecasecontext.0/@uc.0 /0/@UseCaseModel/@usecasecontext.1/@uc.3 /0/@UseCaseModel/@usecasecontext.0/@uc.0 /0/@UseCaseModel/@usecasecontext.0/@uc.1 /0/@UseCaseModel/@usecasecontext.0/@uc.0"/>
+    </UseCaseModel>
+    <DomainModel name="onlineedu.remodel">
+      <systeminterface xsi:type="req:ProvideInterface" name="UserInterfaceofMS0" entitycontext="/0/@DomainModel/@entitycontext.0"/>
+      <systeminterface xsi:type="req:ProvideInterface" name="UserInterfaceofMS1" entitycontext="/0/@DomainModel/@entitycontext.1"/>
+      <systeminterface xsi:type="req:ProvideInterface" name="UserInterfaceofMS2" entitycontext="/0/@DomainModel/@entitycontext.2"/>
+      <entitycontext name="EntityContext0" systeminterface="/0/@DomainModel/@systeminterface.0">
+        <userinterface name="UserInterface">
+          <operation name="listByDictCodeAndName()"/>
+          <operation name="listByDictCode()"/>
+        </userinterface>
+        <userinterface name="InterSystemInterface"/>
+        <entity name="LoginRecord">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="Username">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Os">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Device">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Browser">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Ip">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="OperType">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="Comments">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="CreateTime">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="UpdateTime">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+        <entity name="UserTwo">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="Username">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Password">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="NickName">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Avatar">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Sex">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="Phone">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Email">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="EmailVerified">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="TrueName">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="IdCard">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Birthday">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Introduction">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Present">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="State">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="CreateTime">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="UpdateTime">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+      </entitycontext>
+      <entitycontext name="EntityContext1" systeminterface="/0/@DomainModel/@systeminterface.1">
+        <userinterface name="UserInterface"/>
+        <userinterface name="InterSystemInterface"/>
+        <entity name="OperRecord">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="UserId">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="Model">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Description">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Url">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="RequestMethod">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="OperMethod">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Param">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="ResultS">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Ip">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="SpendTime">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="State">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Comments">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="CreateTime">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="UpdateTime">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+      </entitycontext>
+      <entitycontext name="EntityContext2" systeminterface="/0/@DomainModel/@systeminterface.2">
+        <userinterface name="UserInterface">
+          <operation name="getUserMenu()"/>
+        </userinterface>
+        <userinterface name="InterSystemInterface"/>
+        <entity name="Menu">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="ParentId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="MenuName">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="MenuIcon">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="IconColor">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Path">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Target">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Hide">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="SortNumber">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="Authority">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="MenuType">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="CreateTime">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="UpdateTime">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <reference name="LinkedRole" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.2/@entity.1"/>
+          <reference name="MenutoUser" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.2/@entity.2"/>
+        </entity>
+        <entity name="Role">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="RoleName">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="RoleCode">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Comments">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="CreateTime">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="UpdateTime">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <reference name="RoletoMenu" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.2/@entity.0"/>
+          <reference name="RoletoUser" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.2/@entity.2"/>
+        </entity>
+        <entity name="User">
+          <attributes name="Id">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="Username">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Password">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="NickName">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Avatar">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Sex">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="Phone">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Email">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="EmailVerified">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="TrueName">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="IdCard">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Birthday">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Introduction">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="OrganizationId">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="State">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="CreateTime">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="UpdateTime">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Authorities">
+            <type xsi:type="req:PrimitiveTypeCS" name="Set"/>
+          </attributes>
+          <reference name="UsertoRole" type="Association" ismultiple="true" entity="/0/@DomainModel/@entitycontext.2/@entity.1"/>
+        </entity>
+      </entitycontext>
+    </DomainModel>
+  </req:RequirementModel>
+</xmi:XMI>

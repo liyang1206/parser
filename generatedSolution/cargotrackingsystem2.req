@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xmi:XMI xmlns:req="http://www.example.org/req" xmi:version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <req:RequirementModel>
+    <UseCaseModel name="cargotrackingsystem2.remodel">
+      <usecasecontext name="Microservice 0">
+        <uc name="addCarrierMovement"/>
+        <uc name="createLocation"/>
+        <uc name="routeCargo"/>
+        <uc name="createVoyage"/>
+      </usecasecontext>
+      <usecasecontext name="Microservice 1">
+        <uc name="handleCargoEvent"/>
+        <uc name="viewTracking"/>
+        <uc name="viewCargos"/>
+        <uc name="bookCargo"/>
+        <uc name="changeCargoDestination"/>
+      </usecasecontext>
+      <actor name="CargoTracker" uc="/0/@UseCaseModel/@usecasecontext.1/@uc.0"/>
+      <actor name="Customer" uc="/0/@UseCaseModel/@usecasecontext.1/@uc.1"/>
+      <actor name="VoyageManager" uc="/0/@UseCaseModel/@usecasecontext.0/@uc.0 /0/@UseCaseModel/@usecasecontext.0/@uc.3"/>
+      <actor name="CargoPlanner" uc="/0/@UseCaseModel/@usecasecontext.1/@uc.2 /0/@UseCaseModel/@usecasecontext.0/@uc.2 /0/@UseCaseModel/@usecasecontext.1/@uc.3 /0/@UseCaseModel/@usecasecontext.1/@uc.4"/>
+      <actor name="Admin" uc="/0/@UseCaseModel/@usecasecontext.0/@uc.1"/>
+    </UseCaseModel>
+    <DomainModel name="cargotrackingsystem2.remodel">
+      <systeminterface xsi:type="req:ProvideInterface" name="ProvideEntityofLocation" entitycontext="/0/@DomainModel/@entitycontext.0" receiveinterface="/0/@DomainModel/@systeminterface.3"/>
+      <systeminterface xsi:type="req:ProvideInterface" name="ProvideEntityofVoyageCarrierMovementItinerary" entitycontext="/0/@DomainModel/@entitycontext.1" receiveinterface="/0/@DomainModel/@systeminterface.2"/>
+      <systeminterface xsi:type="req:ReceiveInterface" name="ReceiveEntityofVoyageCarrierMovementItinerary" entitycontext="/0/@DomainModel/@entitycontext.0" provideinterface="/0/@DomainModel/@systeminterface.1"/>
+      <systeminterface xsi:type="req:ReceiveInterface" name="ReceiveEntityofLocation" entitycontext="/0/@DomainModel/@entitycontext.1" provideinterface="/0/@DomainModel/@systeminterface.0"/>
+      <systeminterface xsi:type="req:ProvideInterface" name="UserInterfaceofMS0" entitycontext="/0/@DomainModel/@entitycontext.0"/>
+      <systeminterface xsi:type="req:ProvideInterface" name="UserInterfaceofMS1" entitycontext="/0/@DomainModel/@entitycontext.1"/>
+      <entitycontext name="EntityContext0" systeminterface="/0/@DomainModel/@systeminterface.0 /0/@DomainModel/@systeminterface.2 /0/@DomainModel/@systeminterface.4">
+        <userinterface name="UserInterface">
+          <operation name="addCarrierMovement()"/>
+          <operation name="createLocation()"/>
+          <operation name="routeCargo()"/>
+          <operation name="createVoyage()"/>
+        </userinterface>
+        <userinterface name="InterSystemInterface">
+          <operation name="findLocationbyID()"/>
+        </userinterface>
+        <entity name="Location">
+          <attributes name="PortCode">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+        <entity name="Leg">
+          <reference name="From" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.0/@entity.0"/>
+          <reference name="To" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.0/@entity.0"/>
+        </entity>
+      </entitycontext>
+      <entitycontext name="EntityContext1" systeminterface="/0/@DomainModel/@systeminterface.1 /0/@DomainModel/@systeminterface.3 /0/@DomainModel/@systeminterface.5">
+        <userinterface name="UserInterface">
+          <operation name="handleCargoEvent()"/>
+          <operation name="viewTracking()"/>
+          <operation name="viewCargos()"/>
+          <operation name="bookCargo()"/>
+          <operation name="changeCargoDestination()"/>
+        </userinterface>
+        <userinterface name="InterSystemInterface">
+          <operation name="findVoyagebyID()"/>
+          <operation name="findCarrierMovementbyID()"/>
+          <operation name="findItinerarybyID()"/>
+        </userinterface>
+        <entity name="Cargo">
+          <attributes name="TrackingID">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <reference name="Goal" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.1/@entity.1"/>
+          <reference name="DeliveryHistory" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.1/@entity.2"/>
+          <reference name="CargotoItinerary" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.1/@entity.5"/>
+          <reference name="" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.1/@entity.6"/>
+        </entity>
+        <entity name="RouteSpecification">
+          <attributes name="Arrivetime">
+            <type xsi:type="req:PrimitiveTypeCS" name="Date"/>
+          </attributes>
+          <reference name="RouteSpecificationtoItinerary" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.1/@entity.5"/>
+        </entity>
+        <entity name="HandlingEvent">
+          <attributes name="Content">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <reference name="DeliveryHistorytoCargo" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.1/@entity.0"/>
+          <reference name="HistorytoEvent" type="Association" ismultiple="true" entity="/0/@DomainModel/@entitycontext.1/@entity.3"/>
+        </entity>
+        <entity name="Voyage">
+          <attributes name="Completiontime">
+            <type xsi:type="req:PrimitiveTypeCS" name="Date"/>
+          </attributes>
+          <attributes name="Type">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <reference name="Handled" type="Association" ismultiple="true" entity="/0/@DomainModel/@entitycontext.1/@entity.0"/>
+          <reference name="EventtoMovement" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.1/@entity.4"/>
+        </entity>
+        <entity name="CarrierMovement">
+          <attributes name="ScheduleID">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+        <entity name="Itinerary"/>
+        <entity name="Delivery"/>
+      </entitycontext>
+    </DomainModel>
+  </req:RequirementModel>
+</xmi:XMI>

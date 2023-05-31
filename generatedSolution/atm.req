@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xmi:XMI xmlns:req="http://www.example.org/req" xmi:version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <req:RequirementModel>
+    <UseCaseModel name="atm.remodel">
+      <usecasecontext name="Microservice 0">
+        <uc name="manageUser"/>
+      </usecasecontext>
+      <usecasecontext name="Microservice 1">
+        <uc name="cardIdentification"/>
+        <uc name="withdrawCash"/>
+        <uc name="checkBalance"/>
+        <uc name="depositFunds"/>
+        <uc name="manageBankCard"/>
+      </usecasecontext>
+      <actor name="BankClerk" uc="/0/@UseCaseModel/@usecasecontext.1/@uc.4 /0/@UseCaseModel/@usecasecontext.0/@uc.0"/>
+      <actor name="Customer" uc="/0/@UseCaseModel/@usecasecontext.1/@uc.3 /0/@UseCaseModel/@usecasecontext.1/@uc.1 /0/@UseCaseModel/@usecasecontext.1/@uc.2"/>
+    </UseCaseModel>
+    <DomainModel name="atm.remodel">
+      <systeminterface xsi:type="req:ProvideInterface" name="ProvideEntityofUser" entitycontext="/0/@DomainModel/@entitycontext.0" receiveinterface="/0/@DomainModel/@systeminterface.3"/>
+      <systeminterface xsi:type="req:ProvideInterface" name="ProvideEntityofBankCard" entitycontext="/0/@DomainModel/@entitycontext.1" receiveinterface="/0/@DomainModel/@systeminterface.2"/>
+      <systeminterface xsi:type="req:ReceiveInterface" name="ReceiveEntityofBankCard" entitycontext="/0/@DomainModel/@entitycontext.0" provideinterface="/0/@DomainModel/@systeminterface.1"/>
+      <systeminterface xsi:type="req:ReceiveInterface" name="ReceiveEntityofUser" entitycontext="/0/@DomainModel/@entitycontext.1" provideinterface="/0/@DomainModel/@systeminterface.0"/>
+      <systeminterface xsi:type="req:ProvideInterface" name="UserInterfaceofMS0" entitycontext="/0/@DomainModel/@entitycontext.0"/>
+      <systeminterface xsi:type="req:ProvideInterface" name="UserInterfaceofMS1" entitycontext="/0/@DomainModel/@entitycontext.1"/>
+      <entitycontext name="EntityContext0" systeminterface="/0/@DomainModel/@systeminterface.0 /0/@DomainModel/@systeminterface.2 /0/@DomainModel/@systeminterface.4">
+        <userinterface name="UserInterface">
+          <operation name="modifyUser()"/>
+          <operation name="deleteUser()"/>
+          <operation name="createUser()"/>
+          <operation name="queryUser()"/>
+        </userinterface>
+        <userinterface name="InterSystemInterface">
+          <operation name="findUserbyID()"/>
+        </userinterface>
+        <entity name="User">
+          <attributes name="UserID">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="Name">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Address">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+        </entity>
+      </entitycontext>
+      <entitycontext name="EntityContext1" systeminterface="/0/@DomainModel/@systeminterface.1 /0/@DomainModel/@systeminterface.3 /0/@DomainModel/@systeminterface.5">
+        <userinterface name="UserInterface">
+          <operation name="cardIdentification()"/>
+          <operation name="printReceipt()"/>
+          <operation name="ejectCard()"/>
+          <operation name="withdrawCash()"/>
+          <operation name="inputCard()"/>
+          <operation name="inputPassword()"/>
+          <operation name="checkBalance()"/>
+          <operation name="depositFunds()"/>
+          <operation name="queryBankCard()"/>
+          <operation name="modifyBankCard()"/>
+          <operation name="createBankCard()"/>
+          <operation name="deleteBankCard()"/>
+        </userinterface>
+        <userinterface name="InterSystemInterface">
+          <operation name="findBankCardbyID()"/>
+        </userinterface>
+        <entity name="BankCard">
+          <attributes name="CardID">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="CardStatus">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Catalog">
+            <type xsi:type="req:PrimitiveTypeCS" name="String"/>
+          </attributes>
+          <attributes name="Password">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="Balance">
+            <type xsi:type="req:PrimitiveTypeCS" name="Real"/>
+          </attributes>
+          <reference name="Has" type="Association" ismultiple="true" entity="/0/@DomainModel/@entitycontext.1/@entity.1"/>
+        </entity>
+        <entity name="Transcation">
+          <attributes name="WithdrawedNum">
+            <type xsi:type="req:PrimitiveTypeCS" name="Integer"/>
+          </attributes>
+          <attributes name="BalanceAfterWithdraw">
+            <type xsi:type="req:PrimitiveTypeCS" name="Real"/>
+          </attributes>
+          <reference name="InvolvedCard" type="Association" ismultiple="false" entity="/0/@DomainModel/@entitycontext.1/@entity.0"/>
+        </entity>
+      </entitycontext>
+    </DomainModel>
+  </req:RequirementModel>
+</xmi:XMI>
